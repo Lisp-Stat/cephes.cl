@@ -1,0 +1,80 @@
+* CEPHES.CL
+  A common lisp wrapper for portions of the [[http://www.netlib.org/cephes/][Cephes mathematical
+  library]]. For many years Cephes was considered the gold standard in
+  cross-platform mathematical libraries, superior to the libm
+  distributions of the time (early 1990's). Since then C99 and later
+  ANSI C specifications have closed the gap, but there are still
+  certain special and statistical functions available in Cephes that
+  are not in the standard C libraries.
+
+  Like libm, we use Cephes as a reference implementation to test the
+  accuracy of the lisp versions of special functions.
+
+
+* Installation
+  Until the project is in Quicklisp, you'll need clone the repository
+  into your =~/common-lisp/= directory and then use quicklisp to load
+  it, like so =(ql:quickload "cephes")=.
+
+  Cephes itself is old, and divided up into separate source packages
+  for single float, double float, long double and complex math. We
+  only wrap the double float library here, but you could follow the
+  patterns for doubles and wrap the other versions easily enough.
+
+  As far as we are aware, there are no pre-compiled versions of Cephes
+  for MS Windows, and its [[https://bugzilla.redhat.com/show_bug.cgi?id=447954][license is vague]] enough that we can't
+  distribute it under the MS-PL that CLS is licensed under. Cephes is
+  the basis for [[https://github.com/scipy/scipy/tree/master/scipy/special/cephes][some SciPy special functions]], so you could pull down
+  the BSD licensed source from their github repository and compile
+  from there. [[https://github.com/deepmind/torch-cephes][Torch-cephes]] is another possible source. These project
+  may have binary versions of the library available. Ubuntu has Cephes
+  available as a package; other Linux distributions may also have it.
+
+
+* Usage
+  Cephes is intended to be used for testing, and you should not need it
+  unless developing code in the =special-functions= library. Since
+  this is the first release of CLS, there may be 'leakage' for a few
+  iterations until we can complete the special-functions library.
+
+
+* The API
+  There is no overlap between the wrapped Cephes functions and the
+  Common Lisp numerical tower. All functions are in the =cephes=
+  package.
+
+  * cephes
+
+    Currently exported functions are:
+
+    | function | description                                                        |
+    |----------+--------------------------------------------------------------------|
+    | igam     | Lower incomplete gamma, normalised                                 |
+    | igamc    | Upper incomplete gamma, normalised                                 |
+    | gamma    | Gamma function                                                     |
+    | lgam     | Log of gamma function                                              |
+    | beta     | Beta function                                                      |
+    | lbeta    | Log of beta function                                               |
+    | incbet   | Lower incomplete beta, normalised                                  |
+    | incbi    | Inverse of incomplete beta integral                                |
+    | ntdr     | Area under the Gaussian probability density function               |
+    | ntdri    | Returns x such that the area under the Gaussian PDF is equal to y  |
+    | erf      | Error function                                                     |
+    | erfc     | Complementary error function                                       |
+    | erfinv   | Inverse of the error function                                      |
+    | erfinvc  | Inverse of the complementary error function                        |
+
+
+* Status
+  We only wrap doubles at the moment. Since this library is used
+  primarily for testing the CLS statistical and special functions,
+  Cephes development is ad-hoc, i.e. 'wrap it when you need it'.
+
+* Contributing
+  When contributing to this repository, please first discuss major
+  changes to the existing code you wish to make via a github
+  issue. Minor changes and major additions are welcome. Please [[https://chris.beams.io/posts/git-commit/][write
+  good commit messages]].
+
+* License
+  CEPHES.CL is available under the [[https://opensource.org/licenses/MS-PL][Microsoft Public License]].
