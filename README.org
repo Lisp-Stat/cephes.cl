@@ -7,8 +7,8 @@
   certain special and statistical functions available in Cephes that
   are not in the standard C libraries.
 
-  Like libm, we use Cephes as a reference implementation to test the
-  accuracy of the lisp versions of special functions.
+  Like we do with libm, Cephes is a reference implementation to test
+  the accuracy of the lisp versions of special functions.
 
 
 * Installation
@@ -22,20 +22,21 @@
   patterns for doubles and wrap the other versions easily enough.
 
   As far as we are aware, there are no pre-compiled versions of Cephes
-  for MS Windows, and its [[https://bugzilla.redhat.com/show_bug.cgi?id=447954][license is vague]] enough that we can't
-  distribute it under the MS-PL that CLS is licensed under. Cephes is
-  the basis for [[https://github.com/scipy/scipy/tree/master/scipy/special/cephes][some SciPy special functions]], so you could pull down
-  the BSD licensed source from their github repository and compile
-  from there. [[https://github.com/deepmind/torch-cephes][Torch-cephes]] is another possible source. These project
-  may have binary versions of the library available. Ubuntu has Cephes
-  available as a package; other Linux distributions may also have it.
+  and its [[https://bugzilla.redhat.com/show_bug.cgi?id=447954][license is vague]] enough that we can't distribute it under
+  the MS-PL that CLS (Common Lisp Statistics) is licensed
+  under. Cephes is the basis for [[https://github.com/scipy/scipy/tree/master/scipy/special/cephes][some SciPy special functions]], so you
+  could pull down the BSD licensed source from their github repository
+  and compile from there. [[https://github.com/deepmind/torch-cephes][Torch-cephes]] is another possible source with
+  a BSD license. These projects may have binary versions of the
+  library available as part of their installation.
 
 
 * Usage
-  Cephes is intended to be used for testing, and you should not need it
-  unless developing code in the =special-functions= library. Since
-  this is the first release of CLS, there may be 'leakage' for a few
-  iterations until we can complete the special-functions library.
+  Cephes is intended to be used for testing CLS, and you should not
+  need it unless developing code in the =special-functions=
+  library. Since this is the first release of CLS, there may be
+  'leakage' for a few iterations until we can complete the
+  special-functions library.
 
 
 * The API
@@ -43,9 +44,7 @@
   Common Lisp numerical tower. All functions are in the =cephes=
   package.
 
-  * cephes
-
-    Currently exported functions are:
+  Currently exported functions are:
 
     | function | description                                                        |
     |----------+--------------------------------------------------------------------|
