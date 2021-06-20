@@ -1,5 +1,5 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: ANSI-Common-Lisp; Package: CEPHES -*-
-;;; Copyright (c) 2020 by Symbolics Pte. Ltd. All rights reserved.
+;;; Copyright (c) 2020,2021 by Symbolics Pte. Ltd. All rights reserved.
 (in-package #:cephes)
 
 
@@ -43,6 +43,13 @@
 		      (1+ y)))
      (/ 1 (sqrt 2))))
 
+
+;;; Other
+
+;; unity.c
+(cffi:defcfun "log1p" :double (x :double)) ;log(1 + x)
+(cffi:defcfun "expm1" :double (x :double)) ;exp(x) - 1
+(cffi:defcfun "cosm1" :double (x :double)) ;cos(x) - 1
 
 
 #| These are left to do
