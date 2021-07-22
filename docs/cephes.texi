@@ -1,0 +1,2046 @@
+\input texinfo
+
+@c cephes.texi --- Reference manual
+
+@c Copyright (C) 2021 Steven Nunez
+
+@c This file is part of Cephes.
+
+
+
+@c Commentary:
+
+@c Generated automatically by Declt version 2.4 patchlevel 1 "Will Decker"
+@c on Thu Jul 22 16:31:53 2021 GMT+8.
+
+
+@c ====================================================================
+@c Header
+@c ====================================================================
+@c %**start of header
+@setfilename cephes.info
+@settitle The Cephes Reference Manual
+@afourpaper
+@documentencoding UTF-8
+@c %**end of header
+
+
+
+@c ====================================================================
+@c Format Specific Tweaks
+@c ====================================================================
+@tex
+%% Declt uses several Unicode characters to "reveal" blanks. This
+%% works fine in HTML or Info output, but TeX will have problems with
+%% these. The code below translates those characters to something that
+%% TeX can handle.
+
+%% U+23B5 (Bottom Square Bracket), used to reveal white spaces, is
+%% translated to its Computer Modern teletype version.
+\DeclareUnicodeCharacter{23B5}{{\tt\char'040}}
+
+%% U+21B5 (Downwards Arrow With Corner Leftwards), used to reveal
+%% carriage returns, is translated to \hookleftarrow in math mode.
+\DeclareUnicodeCharacter{21B5}{\ensuremath\hookleftarrow}
+
+%% U+21E5 (Rightwards Arrow To Bar), used to reveal tabs, is
+%% translated to something that looks similar, based on a rightarrow
+%% and a vertical bar from the math extension font.
+\DeclareUnicodeCharacter{21E5}{%
+  \ensuremath{\rightarrow\kern-.5em\mathchar\"130C}}
+
+
+%% Declt uses several Unicode characters to replace "fragile" ones in
+%% anchor names and references. These characters are chosen to resemble
+%% the original ones, without interfering with Info syntax. In TeX
+%% however, we can switch them back to the original versions, because
+%% cross-references are done differently. In theory, I think we could do
+%% something similar for HTML output (again, only the Info syntax poses
+%% problems), but I don't know how to do something similar to what's
+%% below.
+
+%% U+2024 (One Dot Leader) replaces periods.
+\DeclareUnicodeCharacter{2024}{.}
+
+%% U+2236 (Ratio) replaces colons.
+\DeclareUnicodeCharacter{2236}{:}
+
+%% U+2768 (Medium Left Parenthesis Ornament) replaces left parenthesis.
+\DeclareUnicodeCharacter{2768}{(}
+
+%% U+2769 (Medium Right Parenthesis Ornament) replaces right parenthesis.
+\DeclareUnicodeCharacter{2769}{)}
+
+%% U+214B (Turned Ampersand) replaces ampersands.
+\DeclareUnicodeCharacter{214B}{&}
+
+%% U+2216 (Set Minus) replaces backslashes.
+\DeclareUnicodeCharacter{2216}{\char"5C}
+
+%% The following ones are already defined in texinfo.tex so we have nothing
+%% more to do:
+%% U+201A (Single Low-9 Quotation Mark) replaces commas.
+%% U+2205 (Empty Set) replaces empty symbol names.
+
+@end tex
+
+
+
+@c ====================================================================
+@c Settings
+@c ====================================================================
+@setchapternewpage odd
+@documentdescription
+The Cephes Reference Manual, version 1.1.
+@end documentdescription
+
+
+
+@c ====================================================================
+@c New Commands
+@c ====================================================================
+
+@c ---------------
+@c Indexing macros
+@c ---------------
+
+@c Packages
+@macro packageindex{name}
+@tpindex \name\
+@tpindex @r{Package, }\name\
+@end macro
+
+@c Systems
+@macro systemindex{name}
+@tpindex \name\
+@tpindex @r{System, }\name\
+@end macro
+
+@c Modules
+@macro moduleindex{name}
+@cindex @t{\name\}
+@cindex Module, @t{\name\}
+@end macro
+
+@c Other files
+@macro otherfileindex{name}
+@cindex @t{\name\}
+@cindex Other File, @t{\name\}
+@cindex File, other, @t{\name\}
+@end macro
+
+@c Lisp files
+@macro lispfileindex{name}
+@cindex @t{\name\}
+@cindex Lisp File, @t{\name\}
+@cindex File, Lisp, @t{\name\}
+@end macro
+
+@c C files
+@macro cfileindex{name}
+@cindex @t{\name\}
+@cindex C File, @t{\name\}
+@cindex File, C, @t{\name\}
+@end macro
+
+@c Java files
+@macro javafileindex{name}
+@cindex @t{\name\}
+@cindex Java File, @t{\name\}
+@cindex File, Java, @t{\name\}
+@end macro
+
+@c Static files
+@macro staticfileindex{name}
+@cindex @t{\name\}
+@cindex Static File, @t{\name\}
+@cindex File, static, @t{\name\}
+@end macro
+
+@c Doc files
+@macro docfileindex{name}
+@cindex @t{\name\}
+@cindex Doc File, @t{\name\}
+@cindex File, doc, @t{\name\}
+@end macro
+
+@c HTML files
+@macro htmlfileindex{name}
+@cindex @t{\name\}
+@cindex HTML File, @t{\name\}
+@cindex File, html, @t{\name\}
+@end macro
+
+@c The following macros are meant to be used within @defxxx environments.
+@c Texinfo performs half the indexing job and we do the other half.
+
+@c Constants
+@macro constantsubindex{name}
+@vindex @r{Constant, }\name\
+@end macro
+
+@c Special variables
+@macro specialsubindex{name}
+@vindex @r{Special Variable, }\name\
+@end macro
+
+@c Symbol macros
+@macro symbolmacrosubindex{name}
+@vindex @r{Symbol Macro, }\name\
+@end macro
+
+@c Slots
+@macro slotsubindex{name}
+@vindex @r{Slot, }\name\
+@end macro
+
+@c Macros
+@macro macrosubindex{name}
+@findex @r{Macro, }\name\
+@end macro
+
+@c Compiler Macros
+@macro compilermacrosubindex{name}
+@findex @r{Compiler Macro, }\name\
+@end macro
+
+@c Functions
+@macro functionsubindex{name}
+@findex @r{Function, }\name\
+@end macro
+
+@c Methods
+@macro methodsubindex{name}
+@findex @r{Method, }\name\
+@end macro
+
+@c Generic Functions
+@macro genericsubindex{name}
+@findex @r{Generic Function, }\name\
+@end macro
+
+@c Setf Expanders
+@macro setfexpandersubindex{name}
+@findex @r{Setf Expander, }\name\
+@end macro
+
+@c Method Combinations
+@macro shortcombinationsubindex{name}
+@tpindex @r{Short Method Combination, }\name\
+@tpindex @r{Method Combination, Short, }\name\
+@end macro
+
+@macro longcombinationsubindex{name}
+@tpindex @r{Long Method Combination, }\name\
+@tpindex @r{Method Combination, Long, }\name\
+@end macro
+
+@c Conditions
+@macro conditionsubindex{name}
+@tpindex @r{Condition, }\name\
+@end macro
+
+@c Structures
+@macro structuresubindex{name}
+@tpindex @r{Structure, }\name\
+@end macro
+
+@c Types
+@macro typesubindex{name}
+@tpindex @r{Type, }\name\
+@end macro
+
+@c Classes
+@macro classsubindex{name}
+@tpindex @r{Class, }\name\
+@end macro
+
+
+
+@c ====================================================================
+@c Info Category and Directory
+@c ====================================================================
+@dircategory Common Lisp
+@direntry
+* Cephes Reference: (cephes). The Cephes Reference Manual.
+@end direntry
+
+
+
+@c ====================================================================
+@c Title Page
+@c ====================================================================
+@titlepage
+@title The Cephes Reference Manual
+@subtitle Wrapper for the Cephes Mathematical Library, version 1.1
+
+@author Steven Nunez <@email{steve@atchar{}symbolics.tech}>
+
+@end titlepage
+
+
+
+@c ====================================================================
+@c Table of Contents
+@c ====================================================================
+@contents
+
+
+
+@c ====================================================================
+@c Top
+@c ====================================================================
+@ifnottex
+@node Top, Systems, (dir), (dir)
+@top The Cephes Reference Manual
+This is the Cephes Reference Manual, version 1.1.
+
+@menu
+* Systems:: The systems documentation
+* Files:: The files documentation
+* Packages:: The packages documentation
+* Definitions:: The symbols documentation
+* Indexes:: Concepts, functions, variables and data types
+@end menu
+@end ifnottex
+
+
+
+@c ====================================================================
+@c Systems
+@c ====================================================================
+@node Systems, Files, Top, Top
+@chapter Systems
+The main system appears first, followed by any subsystem dependency.
+
+@menu
+* The cephes system::
+@end menu
+
+
+@c -----------------
+@c The cephes system
+@c -----------------
+@node The cephes system, , Systems, Systems
+@section @t{cephes}
+@anchor{go to the cephes system}@c
+@systemindex{cephes}@c
+@table @strong
+@item Author
+Steven Nunez <@email{steve@atchar{}symbolics.tech}>
+@item License
+MS-PL
+@item Description
+Wrapper for the Cephes Mathematical Library
+@item Version
+1.1
+@item Dependency
+@t{cffi}
+@item Source
+@ref{go to the cephes․asd file, , @t{cephes.asd}} (file)
+@item Directory
+@url{file://s:/src/cephes/, ignore, @t{s:/src/cephes/}}
+@item Components
+@itemize @bullet
+@item
+@ref{go to the cephes/package․lisp file, , @t{package.lisp}} (file)
+@item
+@ref{go to the cephes/init․lisp file, , @t{init.lisp}} (file)
+@item
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end itemize
+@end table
+
+
+
+@c ====================================================================
+@c Files
+@c ====================================================================
+@node Files, Packages, Systems, Top
+@chapter Files
+Files are sorted by type and then listed depth-first from the systems
+components trees.
+
+@menu
+* Lisp files::
+@end menu
+
+
+@c ----------
+@c Lisp files
+@c ----------
+@node Lisp files, , Files, Files
+@section Lisp
+@menu
+* The cephes.asd file: The cephes․asd file.
+* The cephes/package.lisp file: The cephes/package․lisp file.
+* The cephes/init.lisp file: The cephes/init․lisp file.
+* The cephes/cephes.lisp file: The cephes/cephes․lisp file.
+@end menu
+
+@node The cephes․asd file, The cephes/package․lisp file, Lisp files, Lisp files
+@subsection @t{cephes.asd}
+@anchor{go to the cephes․asd file}@c
+@lispfileindex{cephes.asd}@c
+@table @strong
+@item Location
+@url{file://s:/src/cephes/cephes.asd, ignore, @t{cephes.asd}}
+@item Systems
+@ref{go to the cephes system, , @t{cephes}} (system)
+@end table
+
+@node The cephes/package․lisp file, The cephes/init․lisp file, The cephes․asd file, Lisp files
+@subsection @t{cephes/package.lisp}
+@anchor{go to the cephes/package․lisp file}@c
+@lispfileindex{cephes/package.lisp}@c
+@table @strong
+@item Parent
+@ref{go to the cephes system, , @t{cephes}} (system)
+@item Location
+@url{file://s:/src/cephes/package.lisp, ignore, @t{package.lisp}}
+@item Packages
+@ref{go to the CEPHES package, , @t{cephes}}
+@end table
+
+@node The cephes/init․lisp file, The cephes/cephes․lisp file, The cephes/package․lisp file, Lisp files
+@subsection @t{cephes/init.lisp}
+@anchor{go to the cephes/init․lisp file}@c
+@lispfileindex{cephes/init.lisp}@c
+@table @strong
+@item Dependency
+@ref{go to the cephes/package․lisp file, , @t{package.lisp}} (file)
+@item Parent
+@ref{go to the cephes system, , @t{cephes}} (system)
+@item Location
+@url{file://s:/src/cephes/init.lisp, ignore, @t{init.lisp}}
+@end table
+
+@node The cephes/cephes․lisp file, , The cephes/init․lisp file, Lisp files
+@subsection @t{cephes/cephes.lisp}
+@anchor{go to the cephes/cephes․lisp file}@c
+@lispfileindex{cephes/cephes.lisp}@c
+@table @strong
+@item Dependency
+@ref{go to the cephes/init․lisp file, , @t{init.lisp}} (file)
+@item Parent
+@ref{go to the cephes system, , @t{cephes}} (system)
+@item Location
+@url{file://s:/src/cephes/cephes.lisp, ignore, @t{cephes.lisp}}
+@item Exported Definitions
+@itemize @bullet
+@item
+@ref{go to the CEPHES∶∶AIRY function, , @t{airy}} (function)
+@item
+@ref{go to the CEPHES∶∶BDTR function, , @t{bdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶BDTRC function, , @t{bdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶BDTRI function, , @t{bdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶BESSELPOLY function, , @t{besselpoly}} (function)
+@item
+@ref{go to the CEPHES∶∶BETA function, , @t{beta}} (function)
+@item
+@ref{go to the CEPHES∶∶BTDTR function, , @t{btdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶CBRT function, , @t{cbrt}} (function)
+@item
+@ref{go to the CEPHES∶∶CHDTR function, , @t{chdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶CHDTRC function, , @t{chdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶CHDTRI function, , @t{chdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶COSDG function, , @t{cosdg}} (function)
+@item
+@ref{go to the CEPHES∶∶COSM1 function, , @t{cosm1}} (function)
+@item
+@ref{go to the CEPHES∶∶COSPI function, , @t{cospi}} (function)
+@item
+@ref{go to the CEPHES∶∶COTDG function, , @t{cotdg}} (function)
+@item
+@ref{go to the CEPHES∶∶DAWSN function, , @t{dawsn}} (function)
+@item
+@ref{go to the CEPHES∶∶ELLIE function, , @t{ellie}} (function)
+@item
+@ref{go to the CEPHES∶∶ELLIK function, , @t{ellik}} (function)
+@item
+@ref{go to the CEPHES∶∶ELLPE function, , @t{ellpe}} (function)
+@item
+@ref{go to the CEPHES∶∶ELLPK function, , @t{ellpk}} (function)
+@item
+@ref{go to the CEPHES∶∶ERF function, , @t{erf}} (function)
+@item
+@ref{go to the CEPHES∶∶ERFC function, , @t{erfc}} (function)
+@item
+@ref{go to the CEPHES∶∶ERFCINV function, , @t{erfcinv}} (function)
+@item
+@ref{go to the CEPHES∶∶ERFINV function, , @t{erfinv}} (function)
+@item
+@ref{go to the CEPHES∶∶EXP10 function, , @t{exp10}} (function)
+@item
+@ref{go to the CEPHES∶∶EXP2 function, , @t{exp2}} (function)
+@item
+@ref{go to the CEPHES∶∶EXPM1 function, , @t{expm1}} (function)
+@item
+@ref{go to the CEPHES∶∶EXPN function, , @t{expn}} (function)
+@item
+@ref{go to the CEPHES∶∶FDTR function, , @t{fdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶FDTRC function, , @t{fdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶FDTRI function, , @t{fdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶FRESNL function, , @t{fresnl}} (function)
+@item
+@ref{go to the CEPHES∶∶GAMMA function, , @t{gamma}} (function)
+@item
+@ref{go to the CEPHES∶∶GDTR function, , @t{gdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶GDTRC function, , @t{gdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶GDTRI function, , @t{gdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶HYP2F1 function, , @t{hyp2f1}} (function)
+@item
+@ref{go to the CEPHES∶∶HYPERG function, , @t{hyperg}} (function)
+@item
+@ref{go to the CEPHES∶∶I0 function, , @t{i0}} (function)
+@item
+@ref{go to the CEPHES∶∶I0E function, , @t{i0e}} (function)
+@item
+@ref{go to the CEPHES∶∶I1 function, , @t{i1}} (function)
+@item
+@ref{go to the CEPHES∶∶I1E function, , @t{i1e}} (function)
+@item
+@ref{go to the CEPHES∶∶IGAM function, , @t{igam}} (function)
+@item
+@ref{go to the CEPHES∶∶IGAMC function, , @t{igamc}} (function)
+@item
+@ref{go to the CEPHES∶∶IGAMCI function, , @t{igamci}} (function)
+@item
+@ref{go to the CEPHES∶∶IGAMI function, , @t{igami}} (function)
+@item
+@ref{go to the CEPHES∶∶INCBET function, , @t{incbet}} (function)
+@item
+@ref{go to the CEPHES∶∶INCBI function, , @t{incbi}} (function)
+@item
+@ref{go to the CEPHES∶∶IV function, , @t{iv}} (function)
+@item
+@ref{go to the CEPHES∶∶J0 function, , @t{j0}} (function)
+@item
+@ref{go to the CEPHES∶∶J1 function, , @t{j1}} (function)
+@item
+@ref{go to the CEPHES∶∶JACOBIAN-ELLIPTIC function, , @t{jacobian-elliptic}} (function)
+@item
+@ref{go to the CEPHES∶∶JV function, , @t{jv}} (function)
+@item
+@ref{go to the CEPHES∶∶K0 function, , @t{k0}} (function)
+@item
+@ref{go to the CEPHES∶∶K0E function, , @t{k0e}} (function)
+@item
+@ref{go to the CEPHES∶∶K1 function, , @t{k1}} (function)
+@item
+@ref{go to the CEPHES∶∶K1E function, , @t{k1e}} (function)
+@item
+@ref{go to the CEPHES∶∶KN function, , @t{kn}} (function)
+@item
+@ref{go to the CEPHES∶∶LANCZOS-SUM function, , @t{lanczos-sum}} (function)
+@item
+@ref{go to the CEPHES∶∶LANCZOS-SUM-NEAR-1 function, , @t{lanczos-sum-near-1}} (function)
+@item
+@ref{go to the CEPHES∶∶LANCZOS-SUM-NEAR-2 function, , @t{lanczos-sum-near-2}} (function)
+@item
+@ref{go to the CEPHES∶∶LANCZOS-SUM-SCALED function, , @t{lanczos-sum-scaled}} (function)
+@item
+@ref{go to the CEPHES∶∶LBETA function, , @t{lbeta}} (function)
+@item
+@ref{go to the CEPHES∶∶LGAM1P function, , @t{lgam1p}} (function)
+@item
+@ref{go to the CEPHES∶∶LOG-GAMMA function, , @t{log-gamma}} (function)
+@item
+@ref{go to the CEPHES∶∶LOG-NDTR function, , @t{log-ndtr}} (function)
+@item
+@ref{go to the CEPHES∶∶LOG1P function, , @t{log1p}} (function)
+@item
+@ref{go to the CEPHES∶∶LOG1PMX function, , @t{log1pmx}} (function)
+@item
+@ref{go to the CEPHES∶∶NBDTR function, , @t{nbdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶NBDTRC function, , @t{nbdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶NBDTRI function, , @t{nbdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶NDTR function, , @t{ndtr}} (function)
+@item
+@ref{go to the CEPHES∶∶NDTRI function, , @t{ndtri}} (function)
+@item
+@ref{go to the CEPHES∶∶OWENS-T function, , @t{owens-t}} (function)
+@item
+@ref{go to the CEPHES∶∶PDTR function, , @t{pdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶PDTRC function, , @t{pdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶PDTRI function, , @t{pdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶POCH function, , @t{poch}} (function)
+@item
+@ref{go to the CEPHES∶∶PSI function, , @t{psi}} (function)
+@item
+@ref{go to the CEPHES∶∶RGAMMA function, , @t{rgamma}} (function)
+@item
+@ref{go to the CEPHES∶∶SHICHI function, , @t{shichi}} (function)
+@item
+@ref{go to the CEPHES∶∶SICI function, , @t{sici}} (function)
+@item
+@ref{go to the CEPHES∶∶SINDG function, , @t{sindg}} (function)
+@item
+@ref{go to the CEPHES∶∶SINPI function, , @t{sinpi}} (function)
+@item
+@ref{go to the CEPHES∶∶SPENCE function, , @t{spence}} (function)
+@item
+@ref{go to the CEPHES∶∶STDTR function, , @t{stdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶STDTRI function, , @t{stdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶TANDG function, , @t{tandg}} (function)
+@item
+@ref{go to the CEPHES∶∶Y0 function, , @t{y0}} (function)
+@item
+@ref{go to the CEPHES∶∶Y1 function, , @t{y1}} (function)
+@item
+@ref{go to the CEPHES∶∶YN function, , @t{yn}} (function)
+@item
+@ref{go to the CEPHES∶∶YV function, , @t{yv}} (function)
+@item
+@ref{go to the CEPHES∶∶ZETA function, , @t{zeta}} (function)
+@item
+@ref{go to the CEPHES∶∶ZETAC function, , @t{zetac}} (function)
+@end itemize
+@item Internal Definitions
+@itemize @bullet
+@item
+@ref{go to the CEPHES∶∶CEPHES-AIRY function, , @t{cephes-airy}} (function)
+@item
+@ref{go to the CEPHES∶∶CEPHES-ELLPJ function, , @t{cephes-ellpj}} (function)
+@item
+@ref{go to the CEPHES∶∶CEPHES-FRESNL function, , @t{cephes-fresnl}} (function)
+@item
+@ref{go to the CEPHES∶∶CEPHES-SHICHI function, , @t{cephes-shichi}} (function)
+@item
+@ref{go to the CEPHES∶∶CEPHES-SICI function, , @t{cephes-sici}} (function)
+@item
+@ref{go to the CEPHES∶∶SIGN-GAMMA function, , @t{sign-gamma}} (function)
+@end itemize
+@end table
+
+
+
+@c ====================================================================
+@c Packages
+@c ====================================================================
+@node Packages, Definitions, Files, Top
+@chapter Packages
+Packages are listed by definition order.
+
+@menu
+* The cephes package::
+@end menu
+
+
+@c ------------------
+@c The cephes package
+@c ------------------
+@node The cephes package, , Packages, Packages
+@section @t{cephes}
+@anchor{go to the CEPHES package}@c
+@packageindex{cephes}@c
+@table @strong
+@item Source
+@ref{go to the cephes/package․lisp file, , @t{package.lisp}} (file)
+@item Use List
+@t{common-lisp}
+@item Exported Definitions
+@itemize @bullet
+@item
+@ref{go to the CEPHES∶∶AIRY function, , @t{airy}} (function)
+@item
+@ref{go to the CEPHES∶∶BDTR function, , @t{bdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶BDTRC function, , @t{bdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶BDTRI function, , @t{bdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶BESSELPOLY function, , @t{besselpoly}} (function)
+@item
+@ref{go to the CEPHES∶∶BETA function, , @t{beta}} (function)
+@item
+@ref{go to the CEPHES∶∶BTDTR function, , @t{btdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶CBRT function, , @t{cbrt}} (function)
+@item
+@ref{go to the CEPHES∶∶CHDTR function, , @t{chdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶CHDTRC function, , @t{chdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶CHDTRI function, , @t{chdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶COSDG function, , @t{cosdg}} (function)
+@item
+@ref{go to the CEPHES∶∶COSM1 function, , @t{cosm1}} (function)
+@item
+@ref{go to the CEPHES∶∶COSPI function, , @t{cospi}} (function)
+@item
+@ref{go to the CEPHES∶∶COTDG function, , @t{cotdg}} (function)
+@item
+@ref{go to the CEPHES∶∶DAWSN function, , @t{dawsn}} (function)
+@item
+@ref{go to the CEPHES∶∶ELLIE function, , @t{ellie}} (function)
+@item
+@ref{go to the CEPHES∶∶ELLIK function, , @t{ellik}} (function)
+@item
+@ref{go to the CEPHES∶∶ELLPE function, , @t{ellpe}} (function)
+@item
+@ref{go to the CEPHES∶∶ELLPK function, , @t{ellpk}} (function)
+@item
+@ref{go to the CEPHES∶∶ERF function, , @t{erf}} (function)
+@item
+@ref{go to the CEPHES∶∶ERFC function, , @t{erfc}} (function)
+@item
+@ref{go to the CEPHES∶∶ERFCINV function, , @t{erfcinv}} (function)
+@item
+@ref{go to the CEPHES∶∶ERFINV function, , @t{erfinv}} (function)
+@item
+@ref{go to the CEPHES∶∶EXP10 function, , @t{exp10}} (function)
+@item
+@ref{go to the CEPHES∶∶EXP2 function, , @t{exp2}} (function)
+@item
+@ref{go to the CEPHES∶∶EXPM1 function, , @t{expm1}} (function)
+@item
+@ref{go to the CEPHES∶∶EXPN function, , @t{expn}} (function)
+@item
+@ref{go to the CEPHES∶∶FDTR function, , @t{fdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶FDTRC function, , @t{fdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶FDTRI function, , @t{fdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶FRESNL function, , @t{fresnl}} (function)
+@item
+@ref{go to the CEPHES∶∶GAMMA function, , @t{gamma}} (function)
+@item
+@ref{go to the CEPHES∶∶GDTR function, , @t{gdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶GDTRC function, , @t{gdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶GDTRI function, , @t{gdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶HYP2F1 function, , @t{hyp2f1}} (function)
+@item
+@ref{go to the CEPHES∶∶HYPERG function, , @t{hyperg}} (function)
+@item
+@ref{go to the CEPHES∶∶I0 function, , @t{i0}} (function)
+@item
+@ref{go to the CEPHES∶∶I0E function, , @t{i0e}} (function)
+@item
+@ref{go to the CEPHES∶∶I1 function, , @t{i1}} (function)
+@item
+@ref{go to the CEPHES∶∶I1E function, , @t{i1e}} (function)
+@item
+@ref{go to the CEPHES∶∶IGAM function, , @t{igam}} (function)
+@item
+@ref{go to the CEPHES∶∶IGAMC function, , @t{igamc}} (function)
+@item
+@ref{go to the CEPHES∶∶IGAMCI function, , @t{igamci}} (function)
+@item
+@ref{go to the CEPHES∶∶IGAMI function, , @t{igami}} (function)
+@item
+@ref{go to the CEPHES∶∶INCBET function, , @t{incbet}} (function)
+@item
+@ref{go to the CEPHES∶∶INCBI function, , @t{incbi}} (function)
+@item
+@ref{go to the CEPHES∶∶IV function, , @t{iv}} (function)
+@item
+@ref{go to the CEPHES∶∶J0 function, , @t{j0}} (function)
+@item
+@ref{go to the CEPHES∶∶J1 function, , @t{j1}} (function)
+@item
+@ref{go to the CEPHES∶∶JACOBIAN-ELLIPTIC function, , @t{jacobian-elliptic}} (function)
+@item
+@ref{go to the CEPHES∶∶JV function, , @t{jv}} (function)
+@item
+@ref{go to the CEPHES∶∶K0 function, , @t{k0}} (function)
+@item
+@ref{go to the CEPHES∶∶K0E function, , @t{k0e}} (function)
+@item
+@ref{go to the CEPHES∶∶K1 function, , @t{k1}} (function)
+@item
+@ref{go to the CEPHES∶∶K1E function, , @t{k1e}} (function)
+@item
+@ref{go to the CEPHES∶∶KN function, , @t{kn}} (function)
+@item
+@ref{go to the CEPHES∶∶LANCZOS-SUM function, , @t{lanczos-sum}} (function)
+@item
+@ref{go to the CEPHES∶∶LANCZOS-SUM-NEAR-1 function, , @t{lanczos-sum-near-1}} (function)
+@item
+@ref{go to the CEPHES∶∶LANCZOS-SUM-NEAR-2 function, , @t{lanczos-sum-near-2}} (function)
+@item
+@ref{go to the CEPHES∶∶LANCZOS-SUM-SCALED function, , @t{lanczos-sum-scaled}} (function)
+@item
+@ref{go to the CEPHES∶∶LBETA function, , @t{lbeta}} (function)
+@item
+@ref{go to the CEPHES∶∶LGAM1P function, , @t{lgam1p}} (function)
+@item
+@ref{go to the CEPHES∶∶LOG-GAMMA function, , @t{log-gamma}} (function)
+@item
+@ref{go to the CEPHES∶∶LOG-NDTR function, , @t{log-ndtr}} (function)
+@item
+@ref{go to the CEPHES∶∶LOG1P function, , @t{log1p}} (function)
+@item
+@ref{go to the CEPHES∶∶LOG1PMX function, , @t{log1pmx}} (function)
+@item
+@ref{go to the CEPHES∶∶NBDTR function, , @t{nbdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶NBDTRC function, , @t{nbdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶NBDTRI function, , @t{nbdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶NDTR function, , @t{ndtr}} (function)
+@item
+@ref{go to the CEPHES∶∶NDTRI function, , @t{ndtri}} (function)
+@item
+@ref{go to the CEPHES∶∶OWENS-T function, , @t{owens-t}} (function)
+@item
+@ref{go to the CEPHES∶∶PDTR function, , @t{pdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶PDTRC function, , @t{pdtrc}} (function)
+@item
+@ref{go to the CEPHES∶∶PDTRI function, , @t{pdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶POCH function, , @t{poch}} (function)
+@item
+@ref{go to the CEPHES∶∶PSI function, , @t{psi}} (function)
+@item
+@ref{go to the CEPHES∶∶RGAMMA function, , @t{rgamma}} (function)
+@item
+@ref{go to the CEPHES∶∶SHICHI function, , @t{shichi}} (function)
+@item
+@ref{go to the CEPHES∶∶SICI function, , @t{sici}} (function)
+@item
+@ref{go to the CEPHES∶∶SINDG function, , @t{sindg}} (function)
+@item
+@ref{go to the CEPHES∶∶SINPI function, , @t{sinpi}} (function)
+@item
+@ref{go to the CEPHES∶∶SPENCE function, , @t{spence}} (function)
+@item
+@ref{go to the CEPHES∶∶STDTR function, , @t{stdtr}} (function)
+@item
+@ref{go to the CEPHES∶∶STDTRI function, , @t{stdtri}} (function)
+@item
+@ref{go to the CEPHES∶∶TANDG function, , @t{tandg}} (function)
+@item
+@ref{go to the CEPHES∶∶Y0 function, , @t{y0}} (function)
+@item
+@ref{go to the CEPHES∶∶Y1 function, , @t{y1}} (function)
+@item
+@ref{go to the CEPHES∶∶YN function, , @t{yn}} (function)
+@item
+@ref{go to the CEPHES∶∶YV function, , @t{yv}} (function)
+@item
+@ref{go to the CEPHES∶∶ZETA function, , @t{zeta}} (function)
+@item
+@ref{go to the CEPHES∶∶ZETAC function, , @t{zetac}} (function)
+@end itemize
+@item Internal Definitions
+@itemize @bullet
+@item
+@ref{go to the CEPHES∶∶CEPHES-AIRY function, , @t{cephes-airy}} (function)
+@item
+@ref{go to the CEPHES∶∶CEPHES-ELLPJ function, , @t{cephes-ellpj}} (function)
+@item
+@ref{go to the CEPHES∶∶CEPHES-FRESNL function, , @t{cephes-fresnl}} (function)
+@item
+@ref{go to the CEPHES∶∶CEPHES-SHICHI function, , @t{cephes-shichi}} (function)
+@item
+@ref{go to the CEPHES∶∶CEPHES-SICI function, , @t{cephes-sici}} (function)
+@item
+@ref{go to the CEPHES∶∶SIGN-GAMMA function, , @t{sign-gamma}} (function)
+@end itemize
+@end table
+
+
+
+@c ====================================================================
+@c Definitions
+@c ====================================================================
+@node Definitions, Indexes, Packages, Top
+@chapter Definitions
+Definitions are sorted by export status, category, package, and then by
+lexicographic order.
+
+@menu
+* Exported definitions::
+* Internal definitions::
+@end menu
+
+
+@c --------------------
+@c Exported definitions
+@c --------------------
+@node Exported definitions, Internal definitions, Definitions, Definitions
+@section Exported definitions
+@menu
+* Exported functions::
+@end menu
+
+@node Exported functions, , Exported definitions, Exported definitions
+@subsection Functions
+@deffn {Function} {airy} X
+@anchor{go to the CEPHES∶∶AIRY function}@c
+@functionsubindex{airy}@c
+Solution of the differential equation y''(x) = xy@*
+The function returns the two independent solutions Ai@comma{} Bi and their first derivatives Ai'(x)@comma{} Bi'(x)@comma{} as VALUES (Ai Bi Aip Bip)
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {bdtr} K N P
+@anchor{go to the CEPHES∶∶BDTR function}@c
+@functionsubindex{bdtr}@c
+Returns the sum of the terms 0 through k of the Binomial probability density
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {bdtrc} K N P
+@anchor{go to the CEPHES∶∶BDTRC function}@c
+@functionsubindex{bdtrc}@c
+Returns the sum of the terms k+1 through n of the Binomial probability density
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {bdtri} K N Y
+@anchor{go to the CEPHES∶∶BDTRI function}@c
+@functionsubindex{bdtri}@c
+Finds the event probability p such that the sum of the terms 0 through k of the Binomial probability densityis equal to the given cumulative probability y.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {besselpoly} A LAMBDA NU
+@anchor{go to the CEPHES∶∶BESSELPOLY function}@c
+@functionsubindex{besselpoly}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {beta} A B
+@anchor{go to the CEPHES∶∶BETA function}@c
+@functionsubindex{beta}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {btdtr} A B X
+@anchor{go to the CEPHES∶∶BTDTR function}@c
+@functionsubindex{btdtr}@c
+Returns the area from zero to x under the beta density function.@*
+
+                          x@*
+            -             -@*
+           | (a+b)       | |  a-1      b-1@*
+ P(x)  =  ----------     |   t    (1-t)    dt@*
+           -     -     | |@*
+          | (a) | (b)   -@*
+                         0@*
+
+This function is identical to the incomplete beta integral function incbet(a@comma{} b@comma{} x).
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {cbrt} X
+@anchor{go to the CEPHES∶∶CBRT function}@c
+@functionsubindex{cbrt}@c
+Returns the cube root of the argument@comma{} which may be negative.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {chdtr} DF X
+@anchor{go to the CEPHES∶∶CHDTR function}@c
+@functionsubindex{chdtr}@c
+Returns the area under the left hand tail (from 0 to x) of the Chi square probability density function with DF degrees of freedom.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {chdtrc} DF X
+@anchor{go to the CEPHES∶∶CHDTRC function}@c
+@functionsubindex{chdtrc}@c
+Returns the area under the right hand tail (from x to infinity) of the Chi square probability density function with DF degrees of freedom
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {chdtri} DF Y
+@anchor{go to the CEPHES∶∶CHDTRI function}@c
+@functionsubindex{chdtri}@c
+Finds the Chi-square argument x such that the integral from x to infinity of the Chi-square density is equal to the given cumulative probability y
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {cosdg} D M S
+@anchor{go to the CEPHES∶∶COSDG function}@c
+@functionsubindex{cosdg}@c
+Range reduction is into intervals of 45 degrees.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {cosm1} X
+@anchor{go to the CEPHES∶∶COSM1 function}@c
+@functionsubindex{cosm1}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {cospi} X
+@anchor{go to the CEPHES∶∶COSPI function}@c
+@functionsubindex{cospi}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {cotdg} X
+@anchor{go to the CEPHES∶∶COTDG function}@c
+@functionsubindex{cotdg}@c
+Returns the circular cotangent of the argument x in degrees
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {dawsn} XX
+@anchor{go to the CEPHES∶∶DAWSN function}@c
+@functionsubindex{dawsn}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {ellie} PHI M
+@anchor{go to the CEPHES∶∶ELLIE function}@c
+@functionsubindex{ellie}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {ellik} PHI M
+@anchor{go to the CEPHES∶∶ELLIK function}@c
+@functionsubindex{ellik}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {ellpe} X
+@anchor{go to the CEPHES∶∶ELLPE function}@c
+@functionsubindex{ellpe}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {ellpk} X
+@anchor{go to the CEPHES∶∶ELLPK function}@c
+@functionsubindex{ellpk}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {erf} X
+@anchor{go to the CEPHES∶∶ERF function}@c
+@functionsubindex{erf}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {erfc} A
+@anchor{go to the CEPHES∶∶ERFC function}@c
+@functionsubindex{erfc}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {erfcinv} Y
+@anchor{go to the CEPHES∶∶ERFCINV function}@c
+@functionsubindex{erfcinv}@c
+Computes the inverse of the complimentary error function on the restricted domain 0 < y < 2.
+This restriction ensures the existence of a unique result such that erfc(erfcinv(y)) = y.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {erfinv} Y
+@anchor{go to the CEPHES∶∶ERFINV function}@c
+@functionsubindex{erfinv}@c
+Inverse of the error function.@*
+ Computes the inverse of the error function on the restricted domain
+ -1 < y < 1. This restriction ensures the existence of a unique result
+ such that erf(erfinv(y)) = y.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {exp10} X
+@anchor{go to the CEPHES∶∶EXP10 function}@c
+@functionsubindex{exp10}@c
+Returns 10 raised to the x power.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {exp2} X
+@anchor{go to the CEPHES∶∶EXP2 function}@c
+@functionsubindex{exp2}@c
+Returns 2 raised to the x power.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {expm1} X
+@anchor{go to the CEPHES∶∶EXPM1 function}@c
+@functionsubindex{expm1}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {expn} N X
+@anchor{go to the CEPHES∶∶EXPN function}@c
+@functionsubindex{expn}@c
+Evaluates the exponential integral
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {fdtr} A B X
+@anchor{go to the CEPHES∶∶FDTR function}@c
+@functionsubindex{fdtr}@c
+Returns the area from zero to x under the F density function
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {fdtrc} A B X
+@anchor{go to the CEPHES∶∶FDTRC function}@c
+@functionsubindex{fdtrc}@c
+Returns the area from x to infinity under the F density function
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {fdtri} A B Y
+@anchor{go to the CEPHES∶∶FDTRI function}@c
+@functionsubindex{fdtri}@c
+Finds the F density argument x such that the integral from -infinity to x of the F density is equal to the given probability p
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {fresnl} XXA
+@anchor{go to the CEPHES∶∶FRESNL function}@c
+@functionsubindex{fresnl}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {gamma} X
+@anchor{go to the CEPHES∶∶GAMMA function}@c
+@functionsubindex{gamma}@c
+Returns Gamma function of the argument.  The result is correctly signed.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {gdtr} A B X
+@anchor{go to the CEPHES∶∶GDTR function}@c
+@functionsubindex{gdtr}@c
+Returns the integral from zero to x of the Gamma probability density function
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {gdtrc} A B X
+@anchor{go to the CEPHES∶∶GDTRC function}@c
+@functionsubindex{gdtrc}@c
+Returns the integral from x to infinity of the Gamma probability density function
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {gdtri} A B Y
+@anchor{go to the CEPHES∶∶GDTRI function}@c
+@functionsubindex{gdtri}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {hyp2f1} A B C X
+@anchor{go to the CEPHES∶∶HYP2F1 function}@c
+@functionsubindex{hyp2f1}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {hyperg} A B X
+@anchor{go to the CEPHES∶∶HYPERG function}@c
+@functionsubindex{hyperg}@c
+Computes the confluent hypergeometric function
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {i0} X
+@anchor{go to the CEPHES∶∶I0 function}@c
+@functionsubindex{i0}@c
+Returns modified Bessel function of order zero of the argument
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {i0e} X
+@anchor{go to the CEPHES∶∶I0E function}@c
+@functionsubindex{i0e}@c
+Returns exponentially scaled modified Bessel function of order zero of the argument
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {i1} X
+@anchor{go to the CEPHES∶∶I1 function}@c
+@functionsubindex{i1}@c
+Returns modified Bessel function of order one of the argument
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {i1e} X
+@anchor{go to the CEPHES∶∶I1E function}@c
+@functionsubindex{i1e}@c
+Returns exponentially scaled modified Bessel function of order one of the argument
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {igam} A X
+@anchor{go to the CEPHES∶∶IGAM function}@c
+@functionsubindex{igam}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {igamc} A X
+@anchor{go to the CEPHES∶∶IGAMC function}@c
+@functionsubindex{igamc}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {igamci} A Q
+@anchor{go to the CEPHES∶∶IGAMCI function}@c
+@functionsubindex{igamci}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {igami} A P
+@anchor{go to the CEPHES∶∶IGAMI function}@c
+@functionsubindex{igami}@c
+Returns the x such that: igamc(a@comma{} x) = p@*
+The input argument a must be positive and p must be between 0 and 1.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {incbet} AA BB XX
+@anchor{go to the CEPHES∶∶INCBET function}@c
+@functionsubindex{incbet}@c
+Returns incomplete beta integral of the arguments@comma{} evaluated from zero to x.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {incbi} AA BB YY0
+@anchor{go to the CEPHES∶∶INCBI function}@c
+@functionsubindex{incbi}@c
+Given y@comma{} the function finds x such that incbet( a@comma{} b@comma{} x ) = y
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {iv} V X
+@anchor{go to the CEPHES∶∶IV function}@c
+@functionsubindex{iv}@c
+Returns modified Bessel function of order v of the argument.  If x is negative@comma{} v must be integer valued.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {j0} X
+@anchor{go to the CEPHES∶∶J0 function}@c
+@functionsubindex{j0}@c
+Returns Bessel function of order zero of the argument
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {j1} X
+@anchor{go to the CEPHES∶∶J1 function}@c
+@functionsubindex{j1}@c
+Returns Bessel function of order one of the argument.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {jacobian-elliptic} U M
+@anchor{go to the CEPHES∶∶JACOBIAN-ELLIPTIC function}@c
+@functionsubindex{jacobian-elliptic}@c
+Evaluates the Jacobian elliptic functions sn(u|m)@comma{} cn(u|m)@comma{} and dn(u|m) of parameter m between 0 and 1@comma{} and real argument u. Returns VALUES (sn cn dn)
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {jv} V X
+@anchor{go to the CEPHES∶∶JV function}@c
+@functionsubindex{jv}@c
+Returns Bessel function of order v of the argument@comma{} where v is real.  Negative x is allowed if v is an integer.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {k0} X
+@anchor{go to the CEPHES∶∶K0 function}@c
+@functionsubindex{k0}@c
+Returns modified Bessel function of the third kind of order zero of the argument.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {k0e} X
+@anchor{go to the CEPHES∶∶K0E function}@c
+@functionsubindex{k0e}@c
+Returns exponentially scaled modified Bessel function of the third kind of order zero of the argument.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {k1} X
+@anchor{go to the CEPHES∶∶K1 function}@c
+@functionsubindex{k1}@c
+Computes the modified Bessel function of the third kind of order one of the argument.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {k1e} X
+@anchor{go to the CEPHES∶∶K1E function}@c
+@functionsubindex{k1e}@c
+Returns exponentially scaled modified Bessel function of the third kind of order one of the argument
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {kn} NN X
+@anchor{go to the CEPHES∶∶KN function}@c
+@functionsubindex{kn}@c
+Returns modified Bessel function of the third kind of order n of the argument
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {lanczos-sum} X
+@anchor{go to the CEPHES∶∶LANCZOS-SUM function}@c
+@functionsubindex{lanczos-sum}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {lanczos-sum-near-1} X
+@anchor{go to the CEPHES∶∶LANCZOS-SUM-NEAR-1 function}@c
+@functionsubindex{lanczos-sum-near-1}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {lanczos-sum-near-2} X
+@anchor{go to the CEPHES∶∶LANCZOS-SUM-NEAR-2 function}@c
+@functionsubindex{lanczos-sum-near-2}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {lanczos-sum-scaled} X
+@anchor{go to the CEPHES∶∶LANCZOS-SUM-SCALED function}@c
+@functionsubindex{lanczos-sum-scaled}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {lbeta} A B
+@anchor{go to the CEPHES∶∶LBETA function}@c
+@functionsubindex{lbeta}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {lgam1p} X
+@anchor{go to the CEPHES∶∶LGAM1P function}@c
+@functionsubindex{lgam1p}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {log-gamma} X
+@anchor{go to the CEPHES∶∶LOG-GAMMA function}@c
+@functionsubindex{log-gamma}@c
+Returns the base e logarithm of the absolute value of the Gamma function of the argument.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {log-ndtr} A
+@anchor{go to the CEPHES∶∶LOG-NDTR function}@c
+@functionsubindex{log-ndtr}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {log1p} X
+@anchor{go to the CEPHES∶∶LOG1P function}@c
+@functionsubindex{log1p}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {log1pmx} X
+@anchor{go to the CEPHES∶∶LOG1PMX function}@c
+@functionsubindex{log1pmx}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {nbdtr} K N P
+@anchor{go to the CEPHES∶∶NBDTR function}@c
+@functionsubindex{nbdtr}@c
+Returns the sum of the terms 0 through k of the negative binomial distribution
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {nbdtrc} K N P
+@anchor{go to the CEPHES∶∶NBDTRC function}@c
+@functionsubindex{nbdtrc}@c
+Returns the sum of the terms k+1 to infinity of the negative binomial distribution
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {nbdtri} K N P
+@anchor{go to the CEPHES∶∶NBDTRI function}@c
+@functionsubindex{nbdtri}@c
+Returns the sum of the terms k+1 to infinity of the negative binomial distribution
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {ndtr} A
+@anchor{go to the CEPHES∶∶NDTR function}@c
+@functionsubindex{ndtr}@c
+Returns the area under the Gaussian probability density function@comma{} integrated from minus infinity to x
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {ndtri} Y0
+@anchor{go to the CEPHES∶∶NDTRI function}@c
+@functionsubindex{ndtri}@c
+Returns the argument@comma{} x@comma{} for which the area under the Gaussian probability density function (integrated from minus infinity to x) is equal to y.@*
+For small arguments 0 < y < exp(-2)@comma{} the program computes z = sqrt( -2.0 * log(y) ); then the approximation is x = z - log(z)/z  - (1/z) P(1/z) / Q(1/z).
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {owens-t} H A
+@anchor{go to the CEPHES∶∶OWENS-T function}@c
+@functionsubindex{owens-t}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {pdtr} K M
+@anchor{go to the CEPHES∶∶PDTR function}@c
+@functionsubindex{pdtr}@c
+Returns the sum of the first k terms of the Poisson distribution
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {pdtrc} K M
+@anchor{go to the CEPHES∶∶PDTRC function}@c
+@functionsubindex{pdtrc}@c
+Returns the sum of the terms k+1 to infinity of the Poisson distribution
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {pdtri} K Y
+@anchor{go to the CEPHES∶∶PDTRI function}@c
+@functionsubindex{pdtri}@c
+Finds the Poisson variable x such that the integral from 0 to x of the Poisson density is equal to the given probability y
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {poch} X M
+@anchor{go to the CEPHES∶∶POCH function}@c
+@functionsubindex{poch}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {psi} X
+@anchor{go to the CEPHES∶∶PSI function}@c
+@functionsubindex{psi}@c
+Returns the logarithmic derivative of the gamma function
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {rgamma} X
+@anchor{go to the CEPHES∶∶RGAMMA function}@c
+@functionsubindex{rgamma}@c
+Returns one divided by the Gamma function of the argument
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {shichi} X
+@anchor{go to the CEPHES∶∶SHICHI function}@c
+@functionsubindex{shichi}@c
+Returns VALUES (si ci)
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {sici} X
+@anchor{go to the CEPHES∶∶SICI function}@c
+@functionsubindex{sici}@c
+Returns VALUES (si ci)
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {sindg} D M S
+@anchor{go to the CEPHES∶∶SINDG function}@c
+@functionsubindex{sindg}@c
+Range reduction is into intervals of 45 degrees.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {sinpi} X
+@anchor{go to the CEPHES∶∶SINPI function}@c
+@functionsubindex{sinpi}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {spence} X
+@anchor{go to the CEPHES∶∶SPENCE function}@c
+@functionsubindex{spence}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {stdtr} K T1
+@anchor{go to the CEPHES∶∶STDTR function}@c
+@functionsubindex{stdtr}@c
+Computes the integral from minus infinity to t of the Student t distribution with integer k > 0 degrees of freedom
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {stdtri} K P
+@anchor{go to the CEPHES∶∶STDTRI function}@c
+@functionsubindex{stdtri}@c
+Given probability p@comma{} finds the argument t such that stdtr(k@comma{}t) is equal to p
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {tandg} X
+@anchor{go to the CEPHES∶∶TANDG function}@c
+@functionsubindex{tandg}@c
+Returns the circular tangent of the argument x in degrees
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {y0} X
+@anchor{go to the CEPHES∶∶Y0 function}@c
+@functionsubindex{y0}@c
+Bessel function of the second kind@comma{} order zero
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {y1} X
+@anchor{go to the CEPHES∶∶Y1 function}@c
+@functionsubindex{y1}@c
+Returns Bessel function of the second kind of order one of the argument.
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {yn} N X
+@anchor{go to the CEPHES∶∶YN function}@c
+@functionsubindex{yn}@c
+ Returns Bessel function of order n@comma{} where n is a (possibly negative) integer
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {yv} V X
+@anchor{go to the CEPHES∶∶YV function}@c
+@functionsubindex{yv}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {zeta} X Q
+@anchor{go to the CEPHES∶∶ZETA function}@c
+@functionsubindex{zeta}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {zetac} X
+@anchor{go to the CEPHES∶∶ZETAC function}@c
+@functionsubindex{zetac}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+
+
+@c --------------------
+@c Internal definitions
+@c --------------------
+@node Internal definitions, , Exported definitions, Definitions
+@section Internal definitions
+@menu
+* Internal functions::
+@end menu
+
+@node Internal functions, , Internal definitions, Internal definitions
+@subsection Functions
+@deffn {Function} {cephes-airy} X AI AIP BI BIP
+@anchor{go to the CEPHES∶∶CEPHES-AIRY function}@c
+@functionsubindex{cephes-airy}@c
+Solution of the differential equation y''(x) = xy@*
+The function returns the two independent solutions Ai@comma{} Bi and their first derivatives Ai'(x)@comma{} Bi'(x).
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {cephes-ellpj} U M SN CN DN PHI
+@anchor{go to the CEPHES∶∶CEPHES-ELLPJ function}@c
+@functionsubindex{cephes-ellpj}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {cephes-fresnl} XXA SSA CCA
+@anchor{go to the CEPHES∶∶CEPHES-FRESNL function}@c
+@functionsubindex{cephes-fresnl}@c
+Evaluates S and C fresnel integrals and returns VALUES (S C)
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {cephes-shichi} X SI CI
+@anchor{go to the CEPHES∶∶CEPHES-SHICHI function}@c
+@functionsubindex{cephes-shichi}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {cephes-sici} X SI CI
+@anchor{go to the CEPHES∶∶CEPHES-SICI function}@c
+@functionsubindex{cephes-sici}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+@deffn {Function} {sign-gamma} X
+@anchor{go to the CEPHES∶∶SIGN-GAMMA function}@c
+@functionsubindex{sign-gamma}@c
+@table @strong
+@item Package
+@ref{go to the CEPHES package, , @t{cephes}}
+@item Source
+@ref{go to the cephes/cephes․lisp file, , @t{cephes.lisp}} (file)
+@end table
+@end deffn
+
+
+
+@c ====================================================================
+@c Indexes
+@c ====================================================================
+@node Indexes, , Definitions, Top
+@appendix Indexes
+@menu
+* Concept index::
+* Function index::
+* Variable index::
+* Data type index::
+@end menu
+
+
+@c -------------
+@c Concept index
+@c -------------
+@node Concept index, Function index, Indexes, Indexes
+@appendixsec Concepts
+@printindex cp
+
+@page
+
+
+@c --------------
+@c Function index
+@c --------------
+@node Function index, Variable index, Concept index, Indexes
+@appendixsec Functions
+@printindex fn
+
+@page
+
+
+@c --------------
+@c Variable index
+@c --------------
+@node Variable index, Data type index, Function index, Indexes
+@appendixsec Variables
+@printindex vr
+
+@page
+
+
+@c ---------------
+@c Data type index
+@c ---------------
+@node Data type index, , Variable index, Indexes
+@appendixsec Data types
+@printindex tp
+
+@bye
+
+@c cephes.texi ends here

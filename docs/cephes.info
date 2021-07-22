@@ -1,0 +1,1475 @@
+This is cephes.info, produced by makeinfo version 6.7 from cephes.texi.
+
+INFO-DIR-SECTION Common Lisp
+START-INFO-DIR-ENTRY
+* Cephes Reference: (cephes). The Cephes Reference Manual.
+END-INFO-DIR-ENTRY
+
+
+File: cephes.info,  Node: Top,  Next: Systems,  Prev: (dir),  Up: (dir)
+
+The Cephes Reference Manual
+***************************
+
+This is the Cephes Reference Manual, version 1.1.
+
+* Menu:
+
+* Systems:: The systems documentation
+* Files:: The files documentation
+* Packages:: The packages documentation
+* Definitions:: The symbols documentation
+* Indexes:: Concepts, functions, variables and data types
+
+
+File: cephes.info,  Node: Systems,  Next: Files,  Prev: Top,  Up: Top
+
+1 Systems
+*********
+
+The main system appears first, followed by any subsystem dependency.
+
+* Menu:
+
+* The cephes system::
+
+
+File: cephes.info,  Node: The cephes system,  Prev: Systems,  Up: Systems
+
+1.1 cephes
+==========
+
+*Author*
+     Steven Nunez <<steve@symbolics.tech>>
+*License*
+     MS-PL
+*Description*
+     Wrapper for the Cephes Mathematical Library
+*Version*
+     1.1
+*Dependency*
+     cffi
+*Source*
+     *note cephes.asd: go to the cephes․asd file. (file)
+*Directory*
+     s:/src/cephes/
+*Components*
+        • *note package.lisp: go to the cephes/package․lisp file. (file)
+        • *note init.lisp: go to the cephes/init․lisp file. (file)
+        • *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+
+
+File: cephes.info,  Node: Files,  Next: Packages,  Prev: Systems,  Up: Top
+
+2 Files
+*******
+
+Files are sorted by type and then listed depth-first from the systems
+components trees.
+
+* Menu:
+
+* Lisp files::
+
+
+File: cephes.info,  Node: Lisp files,  Prev: Files,  Up: Files
+
+2.1 Lisp
+========
+
+* Menu:
+
+* The cephes.asd file: The cephes․asd file.
+* The cephes/package.lisp file: The cephes/package․lisp file.
+* The cephes/init.lisp file: The cephes/init․lisp file.
+* The cephes/cephes.lisp file: The cephes/cephes․lisp file.
+
+
+File: cephes.info,  Node: The cephes․asd file,  Next: The cephes/package․lisp file,  Prev: Lisp files,  Up: Lisp files
+
+2.1.1 cephes.asd
+----------------
+
+*Location*
+     cephes.asd
+*Systems*
+     *note cephes: go to the cephes system. (system)
+
+
+File: cephes.info,  Node: The cephes/package․lisp file,  Next: The cephes/init․lisp file,  Prev: The cephes․asd file,  Up: Lisp files
+
+2.1.2 cephes/package.lisp
+-------------------------
+
+*Parent*
+     *note cephes: go to the cephes system. (system)
+*Location*
+     package.lisp
+*Packages*
+     *note cephes: go to the CEPHES package.
+
+
+File: cephes.info,  Node: The cephes/init․lisp file,  Next: The cephes/cephes․lisp file,  Prev: The cephes/package․lisp file,  Up: Lisp files
+
+2.1.3 cephes/init.lisp
+----------------------
+
+*Dependency*
+     *note package.lisp: go to the cephes/package․lisp file. (file)
+*Parent*
+     *note cephes: go to the cephes system. (system)
+*Location*
+     init.lisp
+
+
+File: cephes.info,  Node: The cephes/cephes․lisp file,  Prev: The cephes/init․lisp file,  Up: Lisp files
+
+2.1.4 cephes/cephes.lisp
+------------------------
+
+*Dependency*
+     *note init.lisp: go to the cephes/init․lisp file. (file)
+*Parent*
+     *note cephes: go to the cephes system. (system)
+*Location*
+     cephes.lisp
+*Exported Definitions*
+        • *note airy: go to the CEPHES∶∶AIRY function. (function)
+        • *note bdtr: go to the CEPHES∶∶BDTR function. (function)
+        • *note bdtrc: go to the CEPHES∶∶BDTRC function. (function)
+        • *note bdtri: go to the CEPHES∶∶BDTRI function. (function)
+        • *note besselpoly: go to the CEPHES∶∶BESSELPOLY function.
+          (function)
+        • *note beta: go to the CEPHES∶∶BETA function. (function)
+        • *note btdtr: go to the CEPHES∶∶BTDTR function. (function)
+        • *note cbrt: go to the CEPHES∶∶CBRT function. (function)
+        • *note chdtr: go to the CEPHES∶∶CHDTR function. (function)
+        • *note chdtrc: go to the CEPHES∶∶CHDTRC function. (function)
+        • *note chdtri: go to the CEPHES∶∶CHDTRI function. (function)
+        • *note cosdg: go to the CEPHES∶∶COSDG function. (function)
+        • *note cosm1: go to the CEPHES∶∶COSM1 function. (function)
+        • *note cospi: go to the CEPHES∶∶COSPI function. (function)
+        • *note cotdg: go to the CEPHES∶∶COTDG function. (function)
+        • *note dawsn: go to the CEPHES∶∶DAWSN function. (function)
+        • *note ellie: go to the CEPHES∶∶ELLIE function. (function)
+        • *note ellik: go to the CEPHES∶∶ELLIK function. (function)
+        • *note ellpe: go to the CEPHES∶∶ELLPE function. (function)
+        • *note ellpk: go to the CEPHES∶∶ELLPK function. (function)
+        • *note erf: go to the CEPHES∶∶ERF function. (function)
+        • *note erfc: go to the CEPHES∶∶ERFC function. (function)
+        • *note erfcinv: go to the CEPHES∶∶ERFCINV function. (function)
+        • *note erfinv: go to the CEPHES∶∶ERFINV function. (function)
+        • *note exp10: go to the CEPHES∶∶EXP10 function. (function)
+        • *note exp2: go to the CEPHES∶∶EXP2 function. (function)
+        • *note expm1: go to the CEPHES∶∶EXPM1 function. (function)
+        • *note expn: go to the CEPHES∶∶EXPN function. (function)
+        • *note fdtr: go to the CEPHES∶∶FDTR function. (function)
+        • *note fdtrc: go to the CEPHES∶∶FDTRC function. (function)
+        • *note fdtri: go to the CEPHES∶∶FDTRI function. (function)
+        • *note fresnl: go to the CEPHES∶∶FRESNL function. (function)
+        • *note gamma: go to the CEPHES∶∶GAMMA function. (function)
+        • *note gdtr: go to the CEPHES∶∶GDTR function. (function)
+        • *note gdtrc: go to the CEPHES∶∶GDTRC function. (function)
+        • *note gdtri: go to the CEPHES∶∶GDTRI function. (function)
+        • *note hyp2f1: go to the CEPHES∶∶HYP2F1 function. (function)
+        • *note hyperg: go to the CEPHES∶∶HYPERG function. (function)
+        • *note i0: go to the CEPHES∶∶I0 function. (function)
+        • *note i0e: go to the CEPHES∶∶I0E function. (function)
+        • *note i1: go to the CEPHES∶∶I1 function. (function)
+        • *note i1e: go to the CEPHES∶∶I1E function. (function)
+        • *note igam: go to the CEPHES∶∶IGAM function. (function)
+        • *note igamc: go to the CEPHES∶∶IGAMC function. (function)
+        • *note igamci: go to the CEPHES∶∶IGAMCI function. (function)
+        • *note igami: go to the CEPHES∶∶IGAMI function. (function)
+        • *note incbet: go to the CEPHES∶∶INCBET function. (function)
+        • *note incbi: go to the CEPHES∶∶INCBI function. (function)
+        • *note iv: go to the CEPHES∶∶IV function. (function)
+        • *note j0: go to the CEPHES∶∶J0 function. (function)
+        • *note j1: go to the CEPHES∶∶J1 function. (function)
+        • *note jacobian-elliptic: go to the CEPHES∶∶JACOBIAN-ELLIPTIC
+          function. (function)
+        • *note jv: go to the CEPHES∶∶JV function. (function)
+        • *note k0: go to the CEPHES∶∶K0 function. (function)
+        • *note k0e: go to the CEPHES∶∶K0E function. (function)
+        • *note k1: go to the CEPHES∶∶K1 function. (function)
+        • *note k1e: go to the CEPHES∶∶K1E function. (function)
+        • *note kn: go to the CEPHES∶∶KN function. (function)
+        • *note lanczos-sum: go to the CEPHES∶∶LANCZOS-SUM function.
+          (function)
+        • *note lanczos-sum-near-1: go to the CEPHES∶∶LANCZOS-SUM-NEAR-1
+          function. (function)
+        • *note lanczos-sum-near-2: go to the CEPHES∶∶LANCZOS-SUM-NEAR-2
+          function. (function)
+        • *note lanczos-sum-scaled: go to the CEPHES∶∶LANCZOS-SUM-SCALED
+          function. (function)
+        • *note lbeta: go to the CEPHES∶∶LBETA function. (function)
+        • *note lgam1p: go to the CEPHES∶∶LGAM1P function. (function)
+        • *note log-gamma: go to the CEPHES∶∶LOG-GAMMA function.
+          (function)
+        • *note log-ndtr: go to the CEPHES∶∶LOG-NDTR function.
+          (function)
+        • *note log1p: go to the CEPHES∶∶LOG1P function. (function)
+        • *note log1pmx: go to the CEPHES∶∶LOG1PMX function. (function)
+        • *note nbdtr: go to the CEPHES∶∶NBDTR function. (function)
+        • *note nbdtrc: go to the CEPHES∶∶NBDTRC function. (function)
+        • *note nbdtri: go to the CEPHES∶∶NBDTRI function. (function)
+        • *note ndtr: go to the CEPHES∶∶NDTR function. (function)
+        • *note ndtri: go to the CEPHES∶∶NDTRI function. (function)
+        • *note owens-t: go to the CEPHES∶∶OWENS-T function. (function)
+        • *note pdtr: go to the CEPHES∶∶PDTR function. (function)
+        • *note pdtrc: go to the CEPHES∶∶PDTRC function. (function)
+        • *note pdtri: go to the CEPHES∶∶PDTRI function. (function)
+        • *note poch: go to the CEPHES∶∶POCH function. (function)
+        • *note psi: go to the CEPHES∶∶PSI function. (function)
+        • *note rgamma: go to the CEPHES∶∶RGAMMA function. (function)
+        • *note shichi: go to the CEPHES∶∶SHICHI function. (function)
+        • *note sici: go to the CEPHES∶∶SICI function. (function)
+        • *note sindg: go to the CEPHES∶∶SINDG function. (function)
+        • *note sinpi: go to the CEPHES∶∶SINPI function. (function)
+        • *note spence: go to the CEPHES∶∶SPENCE function. (function)
+        • *note stdtr: go to the CEPHES∶∶STDTR function. (function)
+        • *note stdtri: go to the CEPHES∶∶STDTRI function. (function)
+        • *note tandg: go to the CEPHES∶∶TANDG function. (function)
+        • *note y0: go to the CEPHES∶∶Y0 function. (function)
+        • *note y1: go to the CEPHES∶∶Y1 function. (function)
+        • *note yn: go to the CEPHES∶∶YN function. (function)
+        • *note yv: go to the CEPHES∶∶YV function. (function)
+        • *note zeta: go to the CEPHES∶∶ZETA function. (function)
+        • *note zetac: go to the CEPHES∶∶ZETAC function. (function)
+*Internal Definitions*
+        • *note cephes-airy: go to the CEPHES∶∶CEPHES-AIRY function.
+          (function)
+        • *note cephes-ellpj: go to the CEPHES∶∶CEPHES-ELLPJ function.
+          (function)
+        • *note cephes-fresnl: go to the CEPHES∶∶CEPHES-FRESNL function.
+          (function)
+        • *note cephes-shichi: go to the CEPHES∶∶CEPHES-SHICHI function.
+          (function)
+        • *note cephes-sici: go to the CEPHES∶∶CEPHES-SICI function.
+          (function)
+        • *note sign-gamma: go to the CEPHES∶∶SIGN-GAMMA function.
+          (function)
+
+
+File: cephes.info,  Node: Packages,  Next: Definitions,  Prev: Files,  Up: Top
+
+3 Packages
+**********
+
+Packages are listed by definition order.
+
+* Menu:
+
+* The cephes package::
+
+
+File: cephes.info,  Node: The cephes package,  Prev: Packages,  Up: Packages
+
+3.1 cephes
+==========
+
+*Source*
+     *note package.lisp: go to the cephes/package․lisp file. (file)
+*Use List*
+     common-lisp
+*Exported Definitions*
+        • *note airy: go to the CEPHES∶∶AIRY function. (function)
+        • *note bdtr: go to the CEPHES∶∶BDTR function. (function)
+        • *note bdtrc: go to the CEPHES∶∶BDTRC function. (function)
+        • *note bdtri: go to the CEPHES∶∶BDTRI function. (function)
+        • *note besselpoly: go to the CEPHES∶∶BESSELPOLY function.
+          (function)
+        • *note beta: go to the CEPHES∶∶BETA function. (function)
+        • *note btdtr: go to the CEPHES∶∶BTDTR function. (function)
+        • *note cbrt: go to the CEPHES∶∶CBRT function. (function)
+        • *note chdtr: go to the CEPHES∶∶CHDTR function. (function)
+        • *note chdtrc: go to the CEPHES∶∶CHDTRC function. (function)
+        • *note chdtri: go to the CEPHES∶∶CHDTRI function. (function)
+        • *note cosdg: go to the CEPHES∶∶COSDG function. (function)
+        • *note cosm1: go to the CEPHES∶∶COSM1 function. (function)
+        • *note cospi: go to the CEPHES∶∶COSPI function. (function)
+        • *note cotdg: go to the CEPHES∶∶COTDG function. (function)
+        • *note dawsn: go to the CEPHES∶∶DAWSN function. (function)
+        • *note ellie: go to the CEPHES∶∶ELLIE function. (function)
+        • *note ellik: go to the CEPHES∶∶ELLIK function. (function)
+        • *note ellpe: go to the CEPHES∶∶ELLPE function. (function)
+        • *note ellpk: go to the CEPHES∶∶ELLPK function. (function)
+        • *note erf: go to the CEPHES∶∶ERF function. (function)
+        • *note erfc: go to the CEPHES∶∶ERFC function. (function)
+        • *note erfcinv: go to the CEPHES∶∶ERFCINV function. (function)
+        • *note erfinv: go to the CEPHES∶∶ERFINV function. (function)
+        • *note exp10: go to the CEPHES∶∶EXP10 function. (function)
+        • *note exp2: go to the CEPHES∶∶EXP2 function. (function)
+        • *note expm1: go to the CEPHES∶∶EXPM1 function. (function)
+        • *note expn: go to the CEPHES∶∶EXPN function. (function)
+        • *note fdtr: go to the CEPHES∶∶FDTR function. (function)
+        • *note fdtrc: go to the CEPHES∶∶FDTRC function. (function)
+        • *note fdtri: go to the CEPHES∶∶FDTRI function. (function)
+        • *note fresnl: go to the CEPHES∶∶FRESNL function. (function)
+        • *note gamma: go to the CEPHES∶∶GAMMA function. (function)
+        • *note gdtr: go to the CEPHES∶∶GDTR function. (function)
+        • *note gdtrc: go to the CEPHES∶∶GDTRC function. (function)
+        • *note gdtri: go to the CEPHES∶∶GDTRI function. (function)
+        • *note hyp2f1: go to the CEPHES∶∶HYP2F1 function. (function)
+        • *note hyperg: go to the CEPHES∶∶HYPERG function. (function)
+        • *note i0: go to the CEPHES∶∶I0 function. (function)
+        • *note i0e: go to the CEPHES∶∶I0E function. (function)
+        • *note i1: go to the CEPHES∶∶I1 function. (function)
+        • *note i1e: go to the CEPHES∶∶I1E function. (function)
+        • *note igam: go to the CEPHES∶∶IGAM function. (function)
+        • *note igamc: go to the CEPHES∶∶IGAMC function. (function)
+        • *note igamci: go to the CEPHES∶∶IGAMCI function. (function)
+        • *note igami: go to the CEPHES∶∶IGAMI function. (function)
+        • *note incbet: go to the CEPHES∶∶INCBET function. (function)
+        • *note incbi: go to the CEPHES∶∶INCBI function. (function)
+        • *note iv: go to the CEPHES∶∶IV function. (function)
+        • *note j0: go to the CEPHES∶∶J0 function. (function)
+        • *note j1: go to the CEPHES∶∶J1 function. (function)
+        • *note jacobian-elliptic: go to the CEPHES∶∶JACOBIAN-ELLIPTIC
+          function. (function)
+        • *note jv: go to the CEPHES∶∶JV function. (function)
+        • *note k0: go to the CEPHES∶∶K0 function. (function)
+        • *note k0e: go to the CEPHES∶∶K0E function. (function)
+        • *note k1: go to the CEPHES∶∶K1 function. (function)
+        • *note k1e: go to the CEPHES∶∶K1E function. (function)
+        • *note kn: go to the CEPHES∶∶KN function. (function)
+        • *note lanczos-sum: go to the CEPHES∶∶LANCZOS-SUM function.
+          (function)
+        • *note lanczos-sum-near-1: go to the CEPHES∶∶LANCZOS-SUM-NEAR-1
+          function. (function)
+        • *note lanczos-sum-near-2: go to the CEPHES∶∶LANCZOS-SUM-NEAR-2
+          function. (function)
+        • *note lanczos-sum-scaled: go to the CEPHES∶∶LANCZOS-SUM-SCALED
+          function. (function)
+        • *note lbeta: go to the CEPHES∶∶LBETA function. (function)
+        • *note lgam1p: go to the CEPHES∶∶LGAM1P function. (function)
+        • *note log-gamma: go to the CEPHES∶∶LOG-GAMMA function.
+          (function)
+        • *note log-ndtr: go to the CEPHES∶∶LOG-NDTR function.
+          (function)
+        • *note log1p: go to the CEPHES∶∶LOG1P function. (function)
+        • *note log1pmx: go to the CEPHES∶∶LOG1PMX function. (function)
+        • *note nbdtr: go to the CEPHES∶∶NBDTR function. (function)
+        • *note nbdtrc: go to the CEPHES∶∶NBDTRC function. (function)
+        • *note nbdtri: go to the CEPHES∶∶NBDTRI function. (function)
+        • *note ndtr: go to the CEPHES∶∶NDTR function. (function)
+        • *note ndtri: go to the CEPHES∶∶NDTRI function. (function)
+        • *note owens-t: go to the CEPHES∶∶OWENS-T function. (function)
+        • *note pdtr: go to the CEPHES∶∶PDTR function. (function)
+        • *note pdtrc: go to the CEPHES∶∶PDTRC function. (function)
+        • *note pdtri: go to the CEPHES∶∶PDTRI function. (function)
+        • *note poch: go to the CEPHES∶∶POCH function. (function)
+        • *note psi: go to the CEPHES∶∶PSI function. (function)
+        • *note rgamma: go to the CEPHES∶∶RGAMMA function. (function)
+        • *note shichi: go to the CEPHES∶∶SHICHI function. (function)
+        • *note sici: go to the CEPHES∶∶SICI function. (function)
+        • *note sindg: go to the CEPHES∶∶SINDG function. (function)
+        • *note sinpi: go to the CEPHES∶∶SINPI function. (function)
+        • *note spence: go to the CEPHES∶∶SPENCE function. (function)
+        • *note stdtr: go to the CEPHES∶∶STDTR function. (function)
+        • *note stdtri: go to the CEPHES∶∶STDTRI function. (function)
+        • *note tandg: go to the CEPHES∶∶TANDG function. (function)
+        • *note y0: go to the CEPHES∶∶Y0 function. (function)
+        • *note y1: go to the CEPHES∶∶Y1 function. (function)
+        • *note yn: go to the CEPHES∶∶YN function. (function)
+        • *note yv: go to the CEPHES∶∶YV function. (function)
+        • *note zeta: go to the CEPHES∶∶ZETA function. (function)
+        • *note zetac: go to the CEPHES∶∶ZETAC function. (function)
+*Internal Definitions*
+        • *note cephes-airy: go to the CEPHES∶∶CEPHES-AIRY function.
+          (function)
+        • *note cephes-ellpj: go to the CEPHES∶∶CEPHES-ELLPJ function.
+          (function)
+        • *note cephes-fresnl: go to the CEPHES∶∶CEPHES-FRESNL function.
+          (function)
+        • *note cephes-shichi: go to the CEPHES∶∶CEPHES-SHICHI function.
+          (function)
+        • *note cephes-sici: go to the CEPHES∶∶CEPHES-SICI function.
+          (function)
+        • *note sign-gamma: go to the CEPHES∶∶SIGN-GAMMA function.
+          (function)
+
+
+File: cephes.info,  Node: Definitions,  Next: Indexes,  Prev: Packages,  Up: Top
+
+4 Definitions
+*************
+
+Definitions are sorted by export status, category, package, and then by
+lexicographic order.
+
+* Menu:
+
+* Exported definitions::
+* Internal definitions::
+
+
+File: cephes.info,  Node: Exported definitions,  Next: Internal definitions,  Prev: Definitions,  Up: Definitions
+
+4.1 Exported definitions
+========================
+
+* Menu:
+
+* Exported functions::
+
+
+File: cephes.info,  Node: Exported functions,  Prev: Exported definitions,  Up: Exported definitions
+
+4.1.1 Functions
+---------------
+
+ -- Function: airy X
+     Solution of the differential equation y”(x) = xy
+     The function returns the two independent solutions Ai, Bi and their
+     first derivatives Ai’(x), Bi’(x), as VALUES (Ai Bi Aip Bip)
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: bdtr K N P
+     Returns the sum of the terms 0 through k of the Binomial
+     probability density
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: bdtrc K N P
+     Returns the sum of the terms k+1 through n of the Binomial
+     probability density
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: bdtri K N Y
+     Finds the event probability p such that the sum of the terms 0
+     through k of the Binomial probability densityis equal to the given
+     cumulative probability y.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: besselpoly A LAMBDA NU
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: beta A B
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: btdtr A B X
+     Returns the area from zero to x under the beta density function.
+
+     x
+     - -
+     | (a+b) | | a-1 b-1
+     P(x) = ———- | t (1-t) dt
+     - - | |
+     | (a) | (b) -
+     0
+
+     This function is identical to the incomplete beta integral function
+     incbet(a, b, x).
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: cbrt X
+     Returns the cube root of the argument, which may be negative.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: chdtr DF X
+     Returns the area under the left hand tail (from 0 to x) of the Chi
+     square probability density function with DF degrees of freedom.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: chdtrc DF X
+     Returns the area under the right hand tail (from x to infinity) of
+     the Chi square probability density function with DF degrees of
+     freedom
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: chdtri DF Y
+     Finds the Chi-square argument x such that the integral from x to
+     infinity of the Chi-square density is equal to the given cumulative
+     probability y
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: cosdg D M S
+     Range reduction is into intervals of 45 degrees.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: cosm1 X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: cospi X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: cotdg X
+     Returns the circular cotangent of the argument x in degrees
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: dawsn XX
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: ellie PHI M
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: ellik PHI M
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: ellpe X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: ellpk X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: erf X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: erfc A
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: erfcinv Y
+     Computes the inverse of the complimentary error function on the
+     restricted domain 0 < y < 2.  This restriction ensures the
+     existence of a unique result such that erfc(erfcinv(y)) = y.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: erfinv Y
+     Inverse of the error function.
+     Computes the inverse of the error function on the restricted domain
+     -1 < y < 1.  This restriction ensures the existence of a unique
+     result such that erf(erfinv(y)) = y.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: exp10 X
+     Returns 10 raised to the x power.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: exp2 X
+     Returns 2 raised to the x power.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: expm1 X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: expn N X
+     Evaluates the exponential integral
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: fdtr A B X
+     Returns the area from zero to x under the F density function
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: fdtrc A B X
+     Returns the area from x to infinity under the F density function
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: fdtri A B Y
+     Finds the F density argument x such that the integral from
+     -infinity to x of the F density is equal to the given probability p
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: fresnl XXA
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: gamma X
+     Returns Gamma function of the argument.  The result is correctly
+     signed.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: gdtr A B X
+     Returns the integral from zero to x of the Gamma probability
+     density function
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: gdtrc A B X
+     Returns the integral from x to infinity of the Gamma probability
+     density function
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: gdtri A B Y
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: hyp2f1 A B C X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: hyperg A B X
+     Computes the confluent hypergeometric function
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: i0 X
+     Returns modified Bessel function of order zero of the argument
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: i0e X
+     Returns exponentially scaled modified Bessel function of order zero
+     of the argument
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: i1 X
+     Returns modified Bessel function of order one of the argument
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: i1e X
+     Returns exponentially scaled modified Bessel function of order one
+     of the argument
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: igam A X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: igamc A X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: igamci A Q
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: igami A P
+     Returns the x such that: igamc(a, x) = p
+     The input argument a must be positive and p must be between 0 and
+     1.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: incbet AA BB XX
+     Returns incomplete beta integral of the arguments, evaluated from
+     zero to x.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: incbi AA BB YY0
+     Given y, the function finds x such that incbet( a, b, x ) = y
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: iv V X
+     Returns modified Bessel function of order v of the argument.  If x
+     is negative, v must be integer valued.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: j0 X
+     Returns Bessel function of order zero of the argument
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: j1 X
+     Returns Bessel function of order one of the argument.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: jacobian-elliptic U M
+     Evaluates the Jacobian elliptic functions sn(u|m), cn(u|m), and
+     dn(u|m) of parameter m between 0 and 1, and real argument u.
+     Returns VALUES (sn cn dn)
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: jv V X
+     Returns Bessel function of order v of the argument, where v is
+     real.  Negative x is allowed if v is an integer.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: k0 X
+     Returns modified Bessel function of the third kind of order zero of
+     the argument.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: k0e X
+     Returns exponentially scaled modified Bessel function of the third
+     kind of order zero of the argument.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: k1 X
+     Computes the modified Bessel function of the third kind of order
+     one of the argument.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: k1e X
+     Returns exponentially scaled modified Bessel function of the third
+     kind of order one of the argument
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: kn NN X
+     Returns modified Bessel function of the third kind of order n of
+     the argument
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: lanczos-sum X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: lanczos-sum-near-1 X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: lanczos-sum-near-2 X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: lanczos-sum-scaled X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: lbeta A B
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: lgam1p X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: log-gamma X
+     Returns the base e logarithm of the absolute value of the Gamma
+     function of the argument.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: log-ndtr A
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: log1p X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: log1pmx X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: nbdtr K N P
+     Returns the sum of the terms 0 through k of the negative binomial
+     distribution
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: nbdtrc K N P
+     Returns the sum of the terms k+1 to infinity of the negative
+     binomial distribution
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: nbdtri K N P
+     Returns the sum of the terms k+1 to infinity of the negative
+     binomial distribution
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: ndtr A
+     Returns the area under the Gaussian probability density function,
+     integrated from minus infinity to x
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: ndtri Y0
+     Returns the argument, x, for which the area under the Gaussian
+     probability density function (integrated from minus infinity to x)
+     is equal to y.
+     For small arguments 0 < y < exp(-2), the program computes z = sqrt(
+     -2.0 * log(y) ); then the approximation is x = z - log(z)/z - (1/z)
+     P(1/z) / Q(1/z).
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: owens-t H A
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: pdtr K M
+     Returns the sum of the first k terms of the Poisson distribution
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: pdtrc K M
+     Returns the sum of the terms k+1 to infinity of the Poisson
+     distribution
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: pdtri K Y
+     Finds the Poisson variable x such that the integral from 0 to x of
+     the Poisson density is equal to the given probability y
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: poch X M
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: psi X
+     Returns the logarithmic derivative of the gamma function
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: rgamma X
+     Returns one divided by the Gamma function of the argument
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: shichi X
+     Returns VALUES (si ci)
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: sici X
+     Returns VALUES (si ci)
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: sindg D M S
+     Range reduction is into intervals of 45 degrees.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: sinpi X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: spence X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: stdtr K T1
+     Computes the integral from minus infinity to t of the Student t
+     distribution with integer k > 0 degrees of freedom
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: stdtri K P
+     Given probability p, finds the argument t such that stdtr(k,t) is
+     equal to p
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: tandg X
+     Returns the circular tangent of the argument x in degrees
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: y0 X
+     Bessel function of the second kind, order zero
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: y1 X
+     Returns Bessel function of the second kind of order one of the
+     argument.
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: yn N X
+     Returns Bessel function of order n, where n is a (possibly
+     negative) integer
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: yv V X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: zeta X Q
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: zetac X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+
+
+File: cephes.info,  Node: Internal definitions,  Prev: Exported definitions,  Up: Definitions
+
+4.2 Internal definitions
+========================
+
+* Menu:
+
+* Internal functions::
+
+
+File: cephes.info,  Node: Internal functions,  Prev: Internal definitions,  Up: Internal definitions
+
+4.2.1 Functions
+---------------
+
+ -- Function: cephes-airy X AI AIP BI BIP
+     Solution of the differential equation y”(x) = xy
+     The function returns the two independent solutions Ai, Bi and their
+     first derivatives Ai’(x), Bi’(x).
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: cephes-ellpj U M SN CN DN PHI
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: cephes-fresnl XXA SSA CCA
+     Evaluates S and C fresnel integrals and returns VALUES (S C)
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: cephes-shichi X SI CI
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: cephes-sici X SI CI
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+ -- Function: sign-gamma X
+     *Package*
+          *note cephes: go to the CEPHES package.
+     *Source*
+          *note cephes.lisp: go to the cephes/cephes․lisp file. (file)
+
+
+File: cephes.info,  Node: Indexes,  Prev: Definitions,  Up: Top
+
+Appendix A Indexes
+******************
+
+* Menu:
+
+* Concept index::
+* Function index::
+* Variable index::
+* Data type index::
+
+
+File: cephes.info,  Node: Concept index,  Next: Function index,  Prev: Indexes,  Up: Indexes
+
+A.1 Concepts
+============
+
+ [index ]
+* Menu:
+
+* cephes.asd:                            The cephes․asd file.   (line 6)
+* cephes/cephes.lisp:                    The cephes/cephes․lisp file.
+                                                                (line 6)
+* cephes/init.lisp:                      The cephes/init․lisp file.
+                                                                (line 6)
+* cephes/package.lisp:                   The cephes/package․lisp file.
+                                                                (line 6)
+* File, Lisp, cephes.asd:                The cephes․asd file.   (line 6)
+* File, Lisp, cephes/cephes.lisp:        The cephes/cephes․lisp file.
+                                                                (line 6)
+* File, Lisp, cephes/init.lisp:          The cephes/init․lisp file.
+                                                                (line 6)
+* File, Lisp, cephes/package.lisp:       The cephes/package․lisp file.
+                                                                (line 6)
+* Lisp File, cephes.asd:                 The cephes․asd file.   (line 6)
+* Lisp File, cephes/cephes.lisp:         The cephes/cephes․lisp file.
+                                                                (line 6)
+* Lisp File, cephes/init.lisp:           The cephes/init․lisp file.
+                                                                (line 6)
+* Lisp File, cephes/package.lisp:        The cephes/package․lisp file.
+                                                                (line 6)
+
+
+File: cephes.info,  Node: Function index,  Next: Variable index,  Prev: Concept index,  Up: Indexes
+
+A.2 Functions
+=============
+
+ [index ]
+* Menu:
+
+* airy:                                  Exported functions.  (line   6)
+* bdtr:                                  Exported functions.  (line  14)
+* bdtrc:                                 Exported functions.  (line  21)
+* bdtri:                                 Exported functions.  (line  28)
+* besselpoly:                            Exported functions.  (line  36)
+* beta:                                  Exported functions.  (line  41)
+* btdtr:                                 Exported functions.  (line  46)
+* cbrt:                                  Exported functions.  (line  63)
+* cephes-airy:                           Internal functions.  (line   6)
+* cephes-ellpj:                          Internal functions.  (line  14)
+* cephes-fresnl:                         Internal functions.  (line  19)
+* cephes-shichi:                         Internal functions.  (line  25)
+* cephes-sici:                           Internal functions.  (line  30)
+* chdtr:                                 Exported functions.  (line  69)
+* chdtrc:                                Exported functions.  (line  76)
+* chdtri:                                Exported functions.  (line  84)
+* cosdg:                                 Exported functions.  (line  92)
+* cosm1:                                 Exported functions.  (line  98)
+* cospi:                                 Exported functions.  (line 103)
+* cotdg:                                 Exported functions.  (line 108)
+* dawsn:                                 Exported functions.  (line 114)
+* ellie:                                 Exported functions.  (line 119)
+* ellik:                                 Exported functions.  (line 124)
+* ellpe:                                 Exported functions.  (line 129)
+* ellpk:                                 Exported functions.  (line 134)
+* erf:                                   Exported functions.  (line 139)
+* erfc:                                  Exported functions.  (line 144)
+* erfcinv:                               Exported functions.  (line 149)
+* erfinv:                                Exported functions.  (line 157)
+* exp10:                                 Exported functions.  (line 166)
+* exp2:                                  Exported functions.  (line 172)
+* expm1:                                 Exported functions.  (line 178)
+* expn:                                  Exported functions.  (line 183)
+* fdtr:                                  Exported functions.  (line 189)
+* fdtrc:                                 Exported functions.  (line 195)
+* fdtri:                                 Exported functions.  (line 201)
+* fresnl:                                Exported functions.  (line 208)
+* Function, airy:                        Exported functions.  (line   7)
+* Function, bdtr:                        Exported functions.  (line  15)
+* Function, bdtrc:                       Exported functions.  (line  22)
+* Function, bdtri:                       Exported functions.  (line  29)
+* Function, besselpoly:                  Exported functions.  (line  37)
+* Function, beta:                        Exported functions.  (line  42)
+* Function, btdtr:                       Exported functions.  (line  47)
+* Function, cbrt:                        Exported functions.  (line  64)
+* Function, cephes-airy:                 Internal functions.  (line   7)
+* Function, cephes-ellpj:                Internal functions.  (line  15)
+* Function, cephes-fresnl:               Internal functions.  (line  20)
+* Function, cephes-shichi:               Internal functions.  (line  26)
+* Function, cephes-sici:                 Internal functions.  (line  31)
+* Function, chdtr:                       Exported functions.  (line  70)
+* Function, chdtrc:                      Exported functions.  (line  77)
+* Function, chdtri:                      Exported functions.  (line  85)
+* Function, cosdg:                       Exported functions.  (line  93)
+* Function, cosm1:                       Exported functions.  (line  99)
+* Function, cospi:                       Exported functions.  (line 104)
+* Function, cotdg:                       Exported functions.  (line 109)
+* Function, dawsn:                       Exported functions.  (line 115)
+* Function, ellie:                       Exported functions.  (line 120)
+* Function, ellik:                       Exported functions.  (line 125)
+* Function, ellpe:                       Exported functions.  (line 130)
+* Function, ellpk:                       Exported functions.  (line 135)
+* Function, erf:                         Exported functions.  (line 140)
+* Function, erfc:                        Exported functions.  (line 145)
+* Function, erfcinv:                     Exported functions.  (line 150)
+* Function, erfinv:                      Exported functions.  (line 158)
+* Function, exp10:                       Exported functions.  (line 167)
+* Function, exp2:                        Exported functions.  (line 173)
+* Function, expm1:                       Exported functions.  (line 179)
+* Function, expn:                        Exported functions.  (line 184)
+* Function, fdtr:                        Exported functions.  (line 190)
+* Function, fdtrc:                       Exported functions.  (line 196)
+* Function, fdtri:                       Exported functions.  (line 202)
+* Function, fresnl:                      Exported functions.  (line 209)
+* Function, gamma:                       Exported functions.  (line 214)
+* Function, gdtr:                        Exported functions.  (line 221)
+* Function, gdtrc:                       Exported functions.  (line 228)
+* Function, gdtri:                       Exported functions.  (line 235)
+* Function, hyp2f1:                      Exported functions.  (line 240)
+* Function, hyperg:                      Exported functions.  (line 245)
+* Function, i0:                          Exported functions.  (line 251)
+* Function, i0e:                         Exported functions.  (line 257)
+* Function, i1:                          Exported functions.  (line 264)
+* Function, i1e:                         Exported functions.  (line 270)
+* Function, igam:                        Exported functions.  (line 277)
+* Function, igamc:                       Exported functions.  (line 282)
+* Function, igamci:                      Exported functions.  (line 287)
+* Function, igami:                       Exported functions.  (line 292)
+* Function, incbet:                      Exported functions.  (line 300)
+* Function, incbi:                       Exported functions.  (line 307)
+* Function, iv:                          Exported functions.  (line 313)
+* Function, j0:                          Exported functions.  (line 320)
+* Function, j1:                          Exported functions.  (line 326)
+* Function, jacobian-elliptic:           Exported functions.  (line 332)
+* Function, jv:                          Exported functions.  (line 340)
+* Function, k0:                          Exported functions.  (line 347)
+* Function, k0e:                         Exported functions.  (line 354)
+* Function, k1:                          Exported functions.  (line 361)
+* Function, k1e:                         Exported functions.  (line 368)
+* Function, kn:                          Exported functions.  (line 375)
+* Function, lanczos-sum:                 Exported functions.  (line 382)
+* Function, lanczos-sum-near-1:          Exported functions.  (line 387)
+* Function, lanczos-sum-near-2:          Exported functions.  (line 392)
+* Function, lanczos-sum-scaled:          Exported functions.  (line 397)
+* Function, lbeta:                       Exported functions.  (line 402)
+* Function, lgam1p:                      Exported functions.  (line 407)
+* Function, log-gamma:                   Exported functions.  (line 412)
+* Function, log-ndtr:                    Exported functions.  (line 419)
+* Function, log1p:                       Exported functions.  (line 424)
+* Function, log1pmx:                     Exported functions.  (line 429)
+* Function, nbdtr:                       Exported functions.  (line 434)
+* Function, nbdtrc:                      Exported functions.  (line 441)
+* Function, nbdtri:                      Exported functions.  (line 448)
+* Function, ndtr:                        Exported functions.  (line 455)
+* Function, ndtri:                       Exported functions.  (line 462)
+* Function, owens-t:                     Exported functions.  (line 473)
+* Function, pdtr:                        Exported functions.  (line 478)
+* Function, pdtrc:                       Exported functions.  (line 484)
+* Function, pdtri:                       Exported functions.  (line 491)
+* Function, poch:                        Exported functions.  (line 498)
+* Function, psi:                         Exported functions.  (line 503)
+* Function, rgamma:                      Exported functions.  (line 509)
+* Function, shichi:                      Exported functions.  (line 515)
+* Function, sici:                        Exported functions.  (line 521)
+* Function, sign-gamma:                  Internal functions.  (line  36)
+* Function, sindg:                       Exported functions.  (line 527)
+* Function, sinpi:                       Exported functions.  (line 533)
+* Function, spence:                      Exported functions.  (line 538)
+* Function, stdtr:                       Exported functions.  (line 543)
+* Function, stdtri:                      Exported functions.  (line 550)
+* Function, tandg:                       Exported functions.  (line 557)
+* Function, y0:                          Exported functions.  (line 563)
+* Function, y1:                          Exported functions.  (line 569)
+* Function, yn:                          Exported functions.  (line 576)
+* Function, yv:                          Exported functions.  (line 583)
+* Function, zeta:                        Exported functions.  (line 588)
+* Function, zetac:                       Exported functions.  (line 593)
+* gamma:                                 Exported functions.  (line 213)
+* gdtr:                                  Exported functions.  (line 220)
+* gdtrc:                                 Exported functions.  (line 227)
+* gdtri:                                 Exported functions.  (line 234)
+* hyp2f1:                                Exported functions.  (line 239)
+* hyperg:                                Exported functions.  (line 244)
+* i0:                                    Exported functions.  (line 250)
+* i0e:                                   Exported functions.  (line 256)
+* i1:                                    Exported functions.  (line 263)
+* i1e:                                   Exported functions.  (line 269)
+* igam:                                  Exported functions.  (line 276)
+* igamc:                                 Exported functions.  (line 281)
+* igamci:                                Exported functions.  (line 286)
+* igami:                                 Exported functions.  (line 291)
+* incbet:                                Exported functions.  (line 299)
+* incbi:                                 Exported functions.  (line 306)
+* iv:                                    Exported functions.  (line 312)
+* j0:                                    Exported functions.  (line 319)
+* j1:                                    Exported functions.  (line 325)
+* jacobian-elliptic:                     Exported functions.  (line 331)
+* jv:                                    Exported functions.  (line 339)
+* k0:                                    Exported functions.  (line 346)
+* k0e:                                   Exported functions.  (line 353)
+* k1:                                    Exported functions.  (line 360)
+* k1e:                                   Exported functions.  (line 367)
+* kn:                                    Exported functions.  (line 374)
+* lanczos-sum:                           Exported functions.  (line 381)
+* lanczos-sum-near-1:                    Exported functions.  (line 386)
+* lanczos-sum-near-2:                    Exported functions.  (line 391)
+* lanczos-sum-scaled:                    Exported functions.  (line 396)
+* lbeta:                                 Exported functions.  (line 401)
+* lgam1p:                                Exported functions.  (line 406)
+* log-gamma:                             Exported functions.  (line 411)
+* log-ndtr:                              Exported functions.  (line 418)
+* log1p:                                 Exported functions.  (line 423)
+* log1pmx:                               Exported functions.  (line 428)
+* nbdtr:                                 Exported functions.  (line 433)
+* nbdtrc:                                Exported functions.  (line 440)
+* nbdtri:                                Exported functions.  (line 447)
+* ndtr:                                  Exported functions.  (line 454)
+* ndtri:                                 Exported functions.  (line 461)
+* owens-t:                               Exported functions.  (line 472)
+* pdtr:                                  Exported functions.  (line 477)
+* pdtrc:                                 Exported functions.  (line 483)
+* pdtri:                                 Exported functions.  (line 490)
+* poch:                                  Exported functions.  (line 497)
+* psi:                                   Exported functions.  (line 502)
+* rgamma:                                Exported functions.  (line 508)
+* shichi:                                Exported functions.  (line 514)
+* sici:                                  Exported functions.  (line 520)
+* sign-gamma:                            Internal functions.  (line  35)
+* sindg:                                 Exported functions.  (line 526)
+* sinpi:                                 Exported functions.  (line 532)
+* spence:                                Exported functions.  (line 537)
+* stdtr:                                 Exported functions.  (line 542)
+* stdtri:                                Exported functions.  (line 549)
+* tandg:                                 Exported functions.  (line 556)
+* y0:                                    Exported functions.  (line 562)
+* y1:                                    Exported functions.  (line 568)
+* yn:                                    Exported functions.  (line 575)
+* yv:                                    Exported functions.  (line 582)
+* zeta:                                  Exported functions.  (line 587)
+* zetac:                                 Exported functions.  (line 592)
+
+
+File: cephes.info,  Node: Variable index,  Next: Data type index,  Prev: Function index,  Up: Indexes
+
+A.3 Variables
+=============
+
+
+File: cephes.info,  Node: Data type index,  Prev: Variable index,  Up: Indexes
+
+A.4 Data types
+==============
+
+ [index ]
+* Menu:
+
+* cephes:                                The cephes system.     (line 6)
+* cephes <1>:                            The cephes package.    (line 6)
+* Package, cephes:                       The cephes package.    (line 6)
+* System, cephes:                        The cephes system.     (line 6)
+
+
+
+Tag Table:
+Node: Top202
+Node: Systems607
+Node: The cephes system803
+Ref: go to the cephes system903
+Node: Files1418
+Node: Lisp files1627
+Node: The cephes․asd file1952
+Ref: go to the cephes․asd file2113
+Node: The cephes/package․lisp file2204
+Ref: go to the cephes/package․lisp file2400
+Node: The cephes/init․lisp file2548
+Ref: go to the cephes/init․lisp file2746
+Node: The cephes/cephes․lisp file2918
+Ref: go to the cephes/cephes․lisp file3081
+Node: Packages10963
+Node: The cephes package11143
+Ref: go to the CEPHES package11246
+Node: Definitions19068
+Node: Exported definitions19335
+Node: Exported functions19536
+Ref: go to the CEPHES∶∶AIRY function19694
+Ref: go to the CEPHES∶∶BDTR function20069
+Ref: go to the CEPHES∶∶BDTRC function20334
+Ref: go to the CEPHES∶∶BDTRI function20601
+Ref: go to the CEPHES∶∶BESSELPOLY function20961
+Ref: go to the CEPHES∶∶BETA function21136
+Ref: go to the CEPHES∶∶BTDTR function21314
+Ref: go to the CEPHES∶∶CBRT function21770
+Ref: go to the CEPHES∶∶CHDTR function22014
+Ref: go to the CEPHES∶∶CHDTRC function22333
+Ref: go to the CEPHES∶∶CHDTRI function22664
+Ref: go to the CEPHES∶∶COSDG function23004
+Ref: go to the CEPHES∶∶COSM1 function23232
+Ref: go to the CEPHES∶∶COSPI function23406
+Ref: go to the CEPHES∶∶COTDG function23580
+Ref: go to the CEPHES∶∶DAWSN function23820
+Ref: go to the CEPHES∶∶ELLIE function23998
+Ref: go to the CEPHES∶∶ELLIK function24176
+Ref: go to the CEPHES∶∶ELLPE function24350
+Ref: go to the CEPHES∶∶ELLPK function24524
+Ref: go to the CEPHES∶∶ERF function24696
+Ref: go to the CEPHES∶∶ERFC function24869
+Ref: go to the CEPHES∶∶ERFCINV function25045
+Ref: go to the CEPHES∶∶ERFINV function25419
+Ref: go to the CEPHES∶∶EXP10 function25813
+Ref: go to the CEPHES∶∶EXP2 function26025
+Ref: go to the CEPHES∶∶EXPM1 function26237
+Ref: go to the CEPHES∶∶EXPN function26412
+Ref: go to the CEPHES∶∶FDTR function26629
+Ref: go to the CEPHES∶∶FDTRC function26873
+Ref: go to the CEPHES∶∶FDTRI function27121
+Ref: go to the CEPHES∶∶FRESNL function27435
+Ref: go to the CEPHES∶∶GAMMA function27609
+Ref: go to the CEPHES∶∶GDTR function27869
+Ref: go to the CEPHES∶∶GDTRC function28135
+Ref: go to the CEPHES∶∶GDTRI function28405
+Ref: go to the CEPHES∶∶HYP2F1 function28586
+Ref: go to the CEPHES∶∶HYPERG function28765
+Ref: go to the CEPHES∶∶I0 function28988
+Ref: go to the CEPHES∶∶I0E function29228
+Ref: go to the CEPHES∶∶I1 function29493
+Ref: go to the CEPHES∶∶I1E function29732
+Ref: go to the CEPHES∶∶IGAM function30000
+Ref: go to the CEPHES∶∶IGAMC function30176
+Ref: go to the CEPHES∶∶IGAMCI function30353
+Ref: go to the CEPHES∶∶IGAMI function30529
+Ref: go to the CEPHES∶∶INCBET function30836
+Ref: go to the CEPHES∶∶INCBI function31105
+Ref: go to the CEPHES∶∶IV function31345
+Ref: go to the CEPHES∶∶J0 function31632
+Ref: go to the CEPHES∶∶J1 function31862
+Ref: go to the CEPHES∶∶JACOBIAN-ELLIPTIC function32109
+Ref: go to the CEPHES∶∶JV function32448
+Ref: go to the CEPHES∶∶K0 function32741
+Ref: go to the CEPHES∶∶K0E function33005
+Ref: go to the CEPHES∶∶K1 function33289
+Ref: go to the CEPHES∶∶K1E function33557
+Ref: go to the CEPHES∶∶KN function33842
+Ref: go to the CEPHES∶∶LANCZOS-SUM function34110
+Ref: go to the CEPHES∶∶LANCZOS-SUM-NEAR-1 function34297
+Ref: go to the CEPHES∶∶LANCZOS-SUM-NEAR-2 function34484
+Ref: go to the CEPHES∶∶LANCZOS-SUM-SCALED function34671
+Ref: go to the CEPHES∶∶LBETA function34847
+Ref: go to the CEPHES∶∶LGAM1P function35022
+Ref: go to the CEPHES∶∶LOG-GAMMA function35200
+Ref: go to the CEPHES∶∶LOG-NDTR function35477
+Ref: go to the CEPHES∶∶LOG1P function35651
+Ref: go to the CEPHES∶∶LOG1PMX function35827
+Ref: go to the CEPHES∶∶NBDTR function36005
+Ref: go to the CEPHES∶∶NBDTRC function36273
+Ref: go to the CEPHES∶∶NBDTRI function36545
+Ref: go to the CEPHES∶∶NDTR function36811
+Ref: go to the CEPHES∶∶NDTRI function37098
+Ref: go to the CEPHES∶∶OWENS-T function37604
+Ref: go to the CEPHES∶∶PDTR function37779
+Ref: go to the CEPHES∶∶PDTRC function38025
+Ref: go to the CEPHES∶∶PDTRI function38284
+Ref: go to the CEPHES∶∶POCH function38592
+Ref: go to the CEPHES∶∶PSI function38764
+Ref: go to the CEPHES∶∶RGAMMA function39001
+Ref: go to the CEPHES∶∶SHICHI function39239
+Ref: go to the CEPHES∶∶SICI function39440
+Ref: go to the CEPHES∶∶SINDG function39646
+Ref: go to the CEPHES∶∶SINPI function39874
+Ref: go to the CEPHES∶∶SPENCE function40049
+Ref: go to the CEPHES∶∶STDTR function40226
+Ref: go to the CEPHES∶∶STDTRI function40528
+Ref: go to the CEPHES∶∶TANDG function40789
+Ref: go to the CEPHES∶∶Y0 function41023
+Ref: go to the CEPHES∶∶Y1 function41246
+Ref: go to the CEPHES∶∶YN function41502
+Ref: go to the CEPHES∶∶YV function41762
+Ref: go to the CEPHES∶∶ZETA function41937
+Ref: go to the CEPHES∶∶ZETAC function42111
+Node: Internal definitions42264
+Node: Internal functions42445
+Ref: go to the CEPHES∶∶CEPHES-AIRY function42624
+Ref: go to the CEPHES∶∶CEPHES-ELLPJ function42992
+Ref: go to the CEPHES∶∶CEPHES-FRESNL function43184
+Ref: go to the CEPHES∶∶CEPHES-SHICHI function43438
+Ref: go to the CEPHES∶∶CEPHES-SICI function43624
+Ref: go to the CEPHES∶∶SIGN-GAMMA function43803
+Node: Indexes43956
+Node: Concept index44148
+Node: Function index45820
+Node: Variable index60574
+Node: Data type index60708
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

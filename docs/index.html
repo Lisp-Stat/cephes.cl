@@ -1,0 +1,2359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.7, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Cephes Reference Manual</title>
+
+<meta name="description" content="The Cephes Reference Manual, version 1.1.">
+<meta name="keywords" content="The Cephes Reference Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<link href="#Top" rel="start" title="Top">
+<link href="#Indexes" rel="index" title="Indexes">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="dir.html#Top" rel="up" title="(dir)">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<h1 class="settitle" align="center">The Cephes Reference Manual</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span id="SEC_Contents"></span>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Systems-1" href="#Systems">1 Systems</a>
+  <ul class="no-bullet">
+    <li><a id="toc-cephes" href="#The-cephes-system">1.1 <tt>cephes</tt></a></li>
+  </ul></li>
+  <li><a id="toc-Files-1" href="#Files">2 Files</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lisp" href="#Lisp-files">2.1 Lisp</a>
+    <ul class="no-bullet">
+      <li><a id="toc-cephes_002easd" href="#The-cephes_2024asd-file">2.1.1 <tt>cephes.asd</tt></a></li>
+      <li><a id="toc-cephes_002fpackage_002elisp" href="#The-cephes_002fpackage_2024lisp-file">2.1.2 <tt>cephes/package.lisp</tt></a></li>
+      <li><a id="toc-cephes_002finit_002elisp" href="#The-cephes_002finit_2024lisp-file">2.1.3 <tt>cephes/init.lisp</tt></a></li>
+      <li><a id="toc-cephes_002fcephes_002elisp" href="#The-cephes_002fcephes_2024lisp-file">2.1.4 <tt>cephes/cephes.lisp</tt></a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Packages-1" href="#Packages">3 Packages</a>
+  <ul class="no-bullet">
+    <li><a id="toc-cephes-1" href="#The-cephes-package">3.1 <tt>cephes</tt></a></li>
+  </ul></li>
+  <li><a id="toc-Definitions-1" href="#Definitions">4 Definitions</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Exported-definitions-1" href="#Exported-definitions">4.1 Exported definitions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Functions" href="#Exported-functions">4.1.1 Functions</a></li>
+    </ul></li>
+    <li><a id="toc-Internal-definitions-1" href="#Internal-definitions">4.2 Internal definitions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Functions-1" href="#Internal-functions">4.2.1 Functions</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Indexes-1" href="#Indexes">Appendix A Indexes</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Concepts" href="#Concept-index" rel="index">A.1 Concepts</a></li>
+    <li><a id="toc-Functions-2" href="#Function-index" rel="index">A.2 Functions</a></li>
+    <li><a id="toc-Variables" href="#Variable-index" rel="index">A.3 Variables</a></li>
+    <li><a id="toc-Data-types" href="#Data-type-index" rel="index">A.4 Data types</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+<span id="Top"></span><div class="header">
+<p>
+Next: <a href="#Systems" accesskey="n" rel="next">Systems</a>, Previous: <a href="dir.html#Top" accesskey="p" rel="prev">(dir)</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="The-Cephes-Reference-Manual"></span><h1 class="top">The Cephes Reference Manual</h1>
+<p>This is the Cephes Reference Manual, version 1.1.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Systems" accesskey="1">Systems</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The systems documentation
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Files" accesskey="2">Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The files documentation
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Packages" accesskey="3">Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The packages documentation
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Definitions" accesskey="4">Definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The symbols documentation
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Indexes" accesskey="5">Indexes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Concepts, functions, variables and data types
+</td></tr>
+</table>
+
+
+
+<hr>
+<span id="Systems"></span><div class="header">
+<p>
+Next: <a href="#Files" accesskey="n" rel="next">Files</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Systems-1"></span><h2 class="chapter">1 Systems</h2>
+<p>The main system appears first, followed by any subsystem dependency.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#The-cephes-system" accesskey="1">The cephes system</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="The-cephes-system"></span><div class="header">
+<p>
+Previous: <a href="#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="#Systems" accesskey="u" rel="up">Systems</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="cephes"></span><h3 class="section">1.1 <tt>cephes</tt></h3>
+<span id="go-to-the-cephes-system"></span><span id="index-cephes"></span>
+<span id="index-System_002c-cephes"></span>
+<dl compact="compact">
+<dt><strong>Author</strong></dt>
+<dd><p>Steven Nunez &lt;<a href="mailto:steve@symbolics.tech">steve@symbolics.tech</a>&gt;
+</p></dd>
+<dt><strong>License</strong></dt>
+<dd><p>MS-PL
+</p></dd>
+<dt><strong>Description</strong></dt>
+<dd><p>Wrapper for the Cephes Mathematical Library
+</p></dd>
+<dt><strong>Version</strong></dt>
+<dd><p>1.1
+</p></dd>
+<dt><strong>Dependency</strong></dt>
+<dd><p><tt>cffi</tt>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_2024asd-file"><tt>cephes.asd</tt></a> (file)
+</p></dd>
+<dt><strong>Directory</strong></dt>
+<dd><p><a href="file://s:/src/cephes/"><tt>s:/src/cephes/</tt></a>
+</p></dd>
+<dt><strong>Components</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-cephes_002fpackage_2024lisp-file"><tt>package.lisp</tt></a> (file)
+</li><li> <a href="#go-to-the-cephes_002finit_2024lisp-file"><tt>init.lisp</tt></a> (file)
+</li><li> <a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</li></ul>
+</dd>
+</dl>
+
+
+
+<hr>
+<span id="Files"></span><div class="header">
+<p>
+Next: <a href="#Packages" accesskey="n" rel="next">Packages</a>, Previous: <a href="#Systems" accesskey="p" rel="prev">Systems</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Files-1"></span><h2 class="chapter">2 Files</h2>
+<p>Files are sorted by type and then listed depth-first from the systems
+components trees.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Lisp-files" accesskey="1">Lisp files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="Lisp-files"></span><div class="header">
+<p>
+Previous: <a href="#Files" accesskey="p" rel="prev">Files</a>, Up: <a href="#Files" accesskey="u" rel="up">Files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Lisp"></span><h3 class="section">2.1 Lisp</h3>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#The-cephes_2024asd-file" accesskey="1">The cephes.asd file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-cephes_002fpackage_2024lisp-file" accesskey="2">The cephes/package.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-cephes_002finit_2024lisp-file" accesskey="3">The cephes/init.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#The-cephes_002fcephes_2024lisp-file" accesskey="4">The cephes/cephes.lisp file</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="The-cephes_2024asd-file"></span><div class="header">
+<p>
+Next: <a href="#The-cephes_002fpackage_2024lisp-file" accesskey="n" rel="next">The cephes/package․lisp file</a>, Previous: <a href="#Lisp-files" accesskey="p" rel="prev">Lisp files</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="cephes_002easd"></span><h4 class="subsection">2.1.1 <tt>cephes.asd</tt></h4>
+<span id="go-to-the-cephes_2024asd-file"></span><span id="index-cephes_002easd"></span>
+<span id="index-Lisp-File_002c-cephes_002easd"></span>
+<span id="index-File_002c-Lisp_002c-cephes_002easd"></span>
+<dl compact="compact">
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/cephes/cephes.asd"><tt>cephes.asd</tt></a>
+</p></dd>
+<dt><strong>Systems</strong></dt>
+<dd><p><a href="#go-to-the-cephes-system"><tt>cephes</tt></a> (system)
+</p></dd>
+</dl>
+
+<hr>
+<span id="The-cephes_002fpackage_2024lisp-file"></span><div class="header">
+<p>
+Next: <a href="#The-cephes_002finit_2024lisp-file" accesskey="n" rel="next">The cephes/init․lisp file</a>, Previous: <a href="#The-cephes_2024asd-file" accesskey="p" rel="prev">The cephes․asd file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="cephes_002fpackage_002elisp"></span><h4 class="subsection">2.1.2 <tt>cephes/package.lisp</tt></h4>
+<span id="go-to-the-cephes_002fpackage_2024lisp-file"></span><span id="index-cephes_002fpackage_002elisp"></span>
+<span id="index-Lisp-File_002c-cephes_002fpackage_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-cephes_002fpackage_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="#go-to-the-cephes-system"><tt>cephes</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/cephes/package.lisp"><tt>package.lisp</tt></a>
+</p></dd>
+<dt><strong>Packages</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+</dl>
+
+<hr>
+<span id="The-cephes_002finit_2024lisp-file"></span><div class="header">
+<p>
+Next: <a href="#The-cephes_002fcephes_2024lisp-file" accesskey="n" rel="next">The cephes/cephes․lisp file</a>, Previous: <a href="#The-cephes_002fpackage_2024lisp-file" accesskey="p" rel="prev">The cephes/package․lisp file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="cephes_002finit_002elisp"></span><h4 class="subsection">2.1.3 <tt>cephes/init.lisp</tt></h4>
+<span id="go-to-the-cephes_002finit_2024lisp-file"></span><span id="index-cephes_002finit_002elisp"></span>
+<span id="index-Lisp-File_002c-cephes_002finit_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-cephes_002finit_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Dependency</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fpackage_2024lisp-file"><tt>package.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="#go-to-the-cephes-system"><tt>cephes</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/cephes/init.lisp"><tt>init.lisp</tt></a>
+</p></dd>
+</dl>
+
+<hr>
+<span id="The-cephes_002fcephes_2024lisp-file"></span><div class="header">
+<p>
+Previous: <a href="#The-cephes_002finit_2024lisp-file" accesskey="p" rel="prev">The cephes/init․lisp file</a>, Up: <a href="#Lisp-files" accesskey="u" rel="up">Lisp files</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="cephes_002fcephes_002elisp"></span><h4 class="subsection">2.1.4 <tt>cephes/cephes.lisp</tt></h4>
+<span id="go-to-the-cephes_002fcephes_2024lisp-file"></span><span id="index-cephes_002fcephes_002elisp"></span>
+<span id="index-Lisp-File_002c-cephes_002fcephes_002elisp"></span>
+<span id="index-File_002c-Lisp_002c-cephes_002fcephes_002elisp"></span>
+<dl compact="compact">
+<dt><strong>Dependency</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002finit_2024lisp-file"><tt>init.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Parent</strong></dt>
+<dd><p><a href="#go-to-the-cephes-system"><tt>cephes</tt></a> (system)
+</p></dd>
+<dt><strong>Location</strong></dt>
+<dd><p><a href="file://s:/src/cephes/cephes.lisp"><tt>cephes.lisp</tt></a>
+</p></dd>
+<dt><strong>Exported Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-CEPHES_2236_2236AIRY-function"><tt>airy</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BDTR-function"><tt>bdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BDTRC-function"><tt>bdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BDTRI-function"><tt>bdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BESSELPOLY-function"><tt>besselpoly</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BETA-function"><tt>beta</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BTDTR-function"><tt>btdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CBRT-function"><tt>cbrt</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CHDTR-function"><tt>chdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CHDTRC-function"><tt>chdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CHDTRI-function"><tt>chdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236COSDG-function"><tt>cosdg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236COSM1-function"><tt>cosm1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236COSPI-function"><tt>cospi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236COTDG-function"><tt>cotdg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236DAWSN-function"><tt>dawsn</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ELLIE-function"><tt>ellie</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ELLIK-function"><tt>ellik</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ELLPE-function"><tt>ellpe</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ELLPK-function"><tt>ellpk</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ERF-function"><tt>erf</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ERFC-function"><tt>erfc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ERFCINV-function"><tt>erfcinv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ERFINV-function"><tt>erfinv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236EXP10-function"><tt>exp10</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236EXP2-function"><tt>exp2</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236EXPM1-function"><tt>expm1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236EXPN-function"><tt>expn</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236FDTR-function"><tt>fdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236FDTRC-function"><tt>fdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236FDTRI-function"><tt>fdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236FRESNL-function"><tt>fresnl</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236GAMMA-function"><tt>gamma</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236GDTR-function"><tt>gdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236GDTRC-function"><tt>gdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236GDTRI-function"><tt>gdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236HYP2F1-function"><tt>hyp2f1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236HYPERG-function"><tt>hyperg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236I0-function"><tt>i0</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236I0E-function"><tt>i0e</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236I1-function"><tt>i1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236I1E-function"><tt>i1e</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IGAM-function"><tt>igam</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IGAMC-function"><tt>igamc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IGAMCI-function"><tt>igamci</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IGAMI-function"><tt>igami</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236INCBET-function"><tt>incbet</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236INCBI-function"><tt>incbi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IV-function"><tt>iv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236J0-function"><tt>j0</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236J1-function"><tt>j1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236JACOBIAN_002dELLIPTIC-function"><tt>jacobian-elliptic</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236JV-function"><tt>jv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236K0-function"><tt>k0</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236K0E-function"><tt>k0e</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236K1-function"><tt>k1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236K1E-function"><tt>k1e</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236KN-function"><tt>kn</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LANCZOS_002dSUM-function"><tt>lanczos-sum</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LANCZOS_002dSUM_002dNEAR_002d1-function"><tt>lanczos-sum-near-1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LANCZOS_002dSUM_002dNEAR_002d2-function"><tt>lanczos-sum-near-2</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LANCZOS_002dSUM_002dSCALED-function"><tt>lanczos-sum-scaled</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LBETA-function"><tt>lbeta</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LGAM1P-function"><tt>lgam1p</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LOG_002dGAMMA-function"><tt>log-gamma</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LOG_002dNDTR-function"><tt>log-ndtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LOG1P-function"><tt>log1p</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LOG1PMX-function"><tt>log1pmx</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NBDTR-function"><tt>nbdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NBDTRC-function"><tt>nbdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NBDTRI-function"><tt>nbdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NDTR-function"><tt>ndtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NDTRI-function"><tt>ndtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236OWENS_002dT-function"><tt>owens-t</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236PDTR-function"><tt>pdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236PDTRC-function"><tt>pdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236PDTRI-function"><tt>pdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236POCH-function"><tt>poch</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236PSI-function"><tt>psi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236RGAMMA-function"><tt>rgamma</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SHICHI-function"><tt>shichi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SICI-function"><tt>sici</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SINDG-function"><tt>sindg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SINPI-function"><tt>sinpi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SPENCE-function"><tt>spence</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236STDTR-function"><tt>stdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236STDTRI-function"><tt>stdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236TANDG-function"><tt>tandg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236Y0-function"><tt>y0</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236Y1-function"><tt>y1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236YN-function"><tt>yn</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236YV-function"><tt>yv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ZETA-function"><tt>zeta</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ZETAC-function"><tt>zetac</tt></a> (function)
+</li></ul>
+</dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dAIRY-function"><tt>cephes-airy</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dELLPJ-function"><tt>cephes-ellpj</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dFRESNL-function"><tt>cephes-fresnl</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dSHICHI-function"><tt>cephes-shichi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dSICI-function"><tt>cephes-sici</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SIGN_002dGAMMA-function"><tt>sign-gamma</tt></a> (function)
+</li></ul>
+</dd>
+</dl>
+
+
+
+<hr>
+<span id="Packages"></span><div class="header">
+<p>
+Next: <a href="#Definitions" accesskey="n" rel="next">Definitions</a>, Previous: <a href="#Files" accesskey="p" rel="prev">Files</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Packages-1"></span><h2 class="chapter">3 Packages</h2>
+<p>Packages are listed by definition order.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#The-cephes-package" accesskey="1">The cephes package</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="The-cephes-package"></span><div class="header">
+<p>
+Previous: <a href="#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href="#Packages" accesskey="u" rel="up">Packages</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="cephes-1"></span><h3 class="section">3.1 <tt>cephes</tt></h3>
+<span id="go-to-the-CEPHES-package"></span><span id="index-cephes-1"></span>
+<span id="index-Package_002c-cephes"></span>
+<dl compact="compact">
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fpackage_2024lisp-file"><tt>package.lisp</tt></a> (file)
+</p></dd>
+<dt><strong>Use List</strong></dt>
+<dd><p><tt>common-lisp</tt>
+</p></dd>
+<dt><strong>Exported Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-CEPHES_2236_2236AIRY-function"><tt>airy</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BDTR-function"><tt>bdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BDTRC-function"><tt>bdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BDTRI-function"><tt>bdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BESSELPOLY-function"><tt>besselpoly</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BETA-function"><tt>beta</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236BTDTR-function"><tt>btdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CBRT-function"><tt>cbrt</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CHDTR-function"><tt>chdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CHDTRC-function"><tt>chdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CHDTRI-function"><tt>chdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236COSDG-function"><tt>cosdg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236COSM1-function"><tt>cosm1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236COSPI-function"><tt>cospi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236COTDG-function"><tt>cotdg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236DAWSN-function"><tt>dawsn</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ELLIE-function"><tt>ellie</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ELLIK-function"><tt>ellik</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ELLPE-function"><tt>ellpe</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ELLPK-function"><tt>ellpk</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ERF-function"><tt>erf</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ERFC-function"><tt>erfc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ERFCINV-function"><tt>erfcinv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ERFINV-function"><tt>erfinv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236EXP10-function"><tt>exp10</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236EXP2-function"><tt>exp2</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236EXPM1-function"><tt>expm1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236EXPN-function"><tt>expn</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236FDTR-function"><tt>fdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236FDTRC-function"><tt>fdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236FDTRI-function"><tt>fdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236FRESNL-function"><tt>fresnl</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236GAMMA-function"><tt>gamma</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236GDTR-function"><tt>gdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236GDTRC-function"><tt>gdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236GDTRI-function"><tt>gdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236HYP2F1-function"><tt>hyp2f1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236HYPERG-function"><tt>hyperg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236I0-function"><tt>i0</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236I0E-function"><tt>i0e</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236I1-function"><tt>i1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236I1E-function"><tt>i1e</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IGAM-function"><tt>igam</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IGAMC-function"><tt>igamc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IGAMCI-function"><tt>igamci</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IGAMI-function"><tt>igami</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236INCBET-function"><tt>incbet</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236INCBI-function"><tt>incbi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236IV-function"><tt>iv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236J0-function"><tt>j0</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236J1-function"><tt>j1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236JACOBIAN_002dELLIPTIC-function"><tt>jacobian-elliptic</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236JV-function"><tt>jv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236K0-function"><tt>k0</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236K0E-function"><tt>k0e</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236K1-function"><tt>k1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236K1E-function"><tt>k1e</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236KN-function"><tt>kn</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LANCZOS_002dSUM-function"><tt>lanczos-sum</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LANCZOS_002dSUM_002dNEAR_002d1-function"><tt>lanczos-sum-near-1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LANCZOS_002dSUM_002dNEAR_002d2-function"><tt>lanczos-sum-near-2</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LANCZOS_002dSUM_002dSCALED-function"><tt>lanczos-sum-scaled</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LBETA-function"><tt>lbeta</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LGAM1P-function"><tt>lgam1p</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LOG_002dGAMMA-function"><tt>log-gamma</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LOG_002dNDTR-function"><tt>log-ndtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LOG1P-function"><tt>log1p</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236LOG1PMX-function"><tt>log1pmx</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NBDTR-function"><tt>nbdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NBDTRC-function"><tt>nbdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NBDTRI-function"><tt>nbdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NDTR-function"><tt>ndtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236NDTRI-function"><tt>ndtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236OWENS_002dT-function"><tt>owens-t</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236PDTR-function"><tt>pdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236PDTRC-function"><tt>pdtrc</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236PDTRI-function"><tt>pdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236POCH-function"><tt>poch</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236PSI-function"><tt>psi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236RGAMMA-function"><tt>rgamma</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SHICHI-function"><tt>shichi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SICI-function"><tt>sici</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SINDG-function"><tt>sindg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SINPI-function"><tt>sinpi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SPENCE-function"><tt>spence</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236STDTR-function"><tt>stdtr</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236STDTRI-function"><tt>stdtri</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236TANDG-function"><tt>tandg</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236Y0-function"><tt>y0</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236Y1-function"><tt>y1</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236YN-function"><tt>yn</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236YV-function"><tt>yv</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ZETA-function"><tt>zeta</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236ZETAC-function"><tt>zetac</tt></a> (function)
+</li></ul>
+</dd>
+<dt><strong>Internal Definitions</strong></dt>
+<dd><ul>
+<li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dAIRY-function"><tt>cephes-airy</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dELLPJ-function"><tt>cephes-ellpj</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dFRESNL-function"><tt>cephes-fresnl</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dSHICHI-function"><tt>cephes-shichi</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236CEPHES_002dSICI-function"><tt>cephes-sici</tt></a> (function)
+</li><li> <a href="#go-to-the-CEPHES_2236_2236SIGN_002dGAMMA-function"><tt>sign-gamma</tt></a> (function)
+</li></ul>
+</dd>
+</dl>
+
+
+
+<hr>
+<span id="Definitions"></span><div class="header">
+<p>
+Next: <a href="#Indexes" accesskey="n" rel="next">Indexes</a>, Previous: <a href="#Packages" accesskey="p" rel="prev">Packages</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Definitions-1"></span><h2 class="chapter">4 Definitions</h2>
+<p>Definitions are sorted by export status, category, package, and then by
+lexicographic order.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Exported-definitions" accesskey="1">Exported definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Internal-definitions" accesskey="2">Internal definitions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="Exported-definitions"></span><div class="header">
+<p>
+Next: <a href="#Internal-definitions" accesskey="n" rel="next">Internal definitions</a>, Previous: <a href="#Definitions" accesskey="p" rel="prev">Definitions</a>, Up: <a href="#Definitions" accesskey="u" rel="up">Definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Exported-definitions-1"></span><h3 class="section">4.1 Exported definitions</h3>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Exported-functions" accesskey="1">Exported functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="Exported-functions"></span><div class="header">
+<p>
+Previous: <a href="#Exported-definitions" accesskey="p" rel="prev">Exported definitions</a>, Up: <a href="#Exported-definitions" accesskey="u" rel="up">Exported definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Functions"></span><h4 class="subsection">4.1.1 Functions</h4>
+<dl>
+<dt id="index-airy">Function: <strong>airy</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236AIRY-function"></span><span id="index-Function_002c-airy"></span>
+<p>Solution of the differential equation y&rdquo;(x) = xy<br>
+The function returns the two independent solutions Ai, Bi and their first derivatives Ai&rsquo;(x), Bi&rsquo;(x), as VALUES (Ai Bi Aip Bip)
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-bdtr">Function: <strong>bdtr</strong> <em>K N P</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236BDTR-function"></span><span id="index-Function_002c-bdtr"></span>
+<p>Returns the sum of the terms 0 through k of the Binomial probability density
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-bdtrc">Function: <strong>bdtrc</strong> <em>K N P</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236BDTRC-function"></span><span id="index-Function_002c-bdtrc"></span>
+<p>Returns the sum of the terms k+1 through n of the Binomial probability density
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-bdtri">Function: <strong>bdtri</strong> <em>K N Y</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236BDTRI-function"></span><span id="index-Function_002c-bdtri"></span>
+<p>Finds the event probability p such that the sum of the terms 0 through k of the Binomial probability densityis equal to the given cumulative probability y.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-besselpoly">Function: <strong>besselpoly</strong> <em>A LAMBDA NU</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236BESSELPOLY-function"></span><span id="index-Function_002c-besselpoly"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-beta">Function: <strong>beta</strong> <em>A B</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236BETA-function"></span><span id="index-Function_002c-beta"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-btdtr">Function: <strong>btdtr</strong> <em>A B X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236BTDTR-function"></span><span id="index-Function_002c-btdtr"></span>
+<p>Returns the area from zero to x under the beta density function.<br>
+</p>
+<p>x<br>
+            -             -<br>
+           | (a+b)       | |  a-1      b-1<br>
+ P(x)  =  &mdash;&mdash;&mdash;-     |   t    (1-t)    dt<br>
+           -     -     | |<br>
+          | (a) | (b)   -<br>
+                         0<br>
+</p>
+<p>This function is identical to the incomplete beta integral function incbet(a, b, x).
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-cbrt">Function: <strong>cbrt</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236CBRT-function"></span><span id="index-Function_002c-cbrt"></span>
+<p>Returns the cube root of the argument, which may be negative.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-chdtr">Function: <strong>chdtr</strong> <em>DF X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236CHDTR-function"></span><span id="index-Function_002c-chdtr"></span>
+<p>Returns the area under the left hand tail (from 0 to x) of the Chi square probability density function with DF degrees of freedom.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-chdtrc">Function: <strong>chdtrc</strong> <em>DF X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236CHDTRC-function"></span><span id="index-Function_002c-chdtrc"></span>
+<p>Returns the area under the right hand tail (from x to infinity) of the Chi square probability density function with DF degrees of freedom
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-chdtri">Function: <strong>chdtri</strong> <em>DF Y</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236CHDTRI-function"></span><span id="index-Function_002c-chdtri"></span>
+<p>Finds the Chi-square argument x such that the integral from x to infinity of the Chi-square density is equal to the given cumulative probability y
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-cosdg">Function: <strong>cosdg</strong> <em>D M S</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236COSDG-function"></span><span id="index-Function_002c-cosdg"></span>
+<p>Range reduction is into intervals of 45 degrees.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-cosm1">Function: <strong>cosm1</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236COSM1-function"></span><span id="index-Function_002c-cosm1"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-cospi">Function: <strong>cospi</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236COSPI-function"></span><span id="index-Function_002c-cospi"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-cotdg">Function: <strong>cotdg</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236COTDG-function"></span><span id="index-Function_002c-cotdg"></span>
+<p>Returns the circular cotangent of the argument x in degrees
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-dawsn">Function: <strong>dawsn</strong> <em>XX</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236DAWSN-function"></span><span id="index-Function_002c-dawsn"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-ellie">Function: <strong>ellie</strong> <em>PHI M</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ELLIE-function"></span><span id="index-Function_002c-ellie"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-ellik">Function: <strong>ellik</strong> <em>PHI M</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ELLIK-function"></span><span id="index-Function_002c-ellik"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-ellpe">Function: <strong>ellpe</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ELLPE-function"></span><span id="index-Function_002c-ellpe"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-ellpk">Function: <strong>ellpk</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ELLPK-function"></span><span id="index-Function_002c-ellpk"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-erf">Function: <strong>erf</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ERF-function"></span><span id="index-Function_002c-erf"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-erfc">Function: <strong>erfc</strong> <em>A</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ERFC-function"></span><span id="index-Function_002c-erfc"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-erfcinv">Function: <strong>erfcinv</strong> <em>Y</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ERFCINV-function"></span><span id="index-Function_002c-erfcinv"></span>
+<p>Computes the inverse of the complimentary error function on the restricted domain 0 &lt; y &lt; 2.
+This restriction ensures the existence of a unique result such that erfc(erfcinv(y)) = y.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-erfinv">Function: <strong>erfinv</strong> <em>Y</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ERFINV-function"></span><span id="index-Function_002c-erfinv"></span>
+<p>Inverse of the error function.<br>
+ Computes the inverse of the error function on the restricted domain
+ -1 &lt; y &lt; 1. This restriction ensures the existence of a unique result
+ such that erf(erfinv(y)) = y.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-exp10">Function: <strong>exp10</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236EXP10-function"></span><span id="index-Function_002c-exp10"></span>
+<p>Returns 10 raised to the x power.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-exp2">Function: <strong>exp2</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236EXP2-function"></span><span id="index-Function_002c-exp2"></span>
+<p>Returns 2 raised to the x power.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-expm1">Function: <strong>expm1</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236EXPM1-function"></span><span id="index-Function_002c-expm1"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-expn">Function: <strong>expn</strong> <em>N X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236EXPN-function"></span><span id="index-Function_002c-expn"></span>
+<p>Evaluates the exponential integral
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-fdtr">Function: <strong>fdtr</strong> <em>A B X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236FDTR-function"></span><span id="index-Function_002c-fdtr"></span>
+<p>Returns the area from zero to x under the F density function
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-fdtrc">Function: <strong>fdtrc</strong> <em>A B X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236FDTRC-function"></span><span id="index-Function_002c-fdtrc"></span>
+<p>Returns the area from x to infinity under the F density function
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-fdtri">Function: <strong>fdtri</strong> <em>A B Y</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236FDTRI-function"></span><span id="index-Function_002c-fdtri"></span>
+<p>Finds the F density argument x such that the integral from -infinity to x of the F density is equal to the given probability p
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-fresnl">Function: <strong>fresnl</strong> <em>XXA</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236FRESNL-function"></span><span id="index-Function_002c-fresnl"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-gamma">Function: <strong>gamma</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236GAMMA-function"></span><span id="index-Function_002c-gamma"></span>
+<p>Returns Gamma function of the argument.  The result is correctly signed.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-gdtr">Function: <strong>gdtr</strong> <em>A B X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236GDTR-function"></span><span id="index-Function_002c-gdtr"></span>
+<p>Returns the integral from zero to x of the Gamma probability density function
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-gdtrc">Function: <strong>gdtrc</strong> <em>A B X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236GDTRC-function"></span><span id="index-Function_002c-gdtrc"></span>
+<p>Returns the integral from x to infinity of the Gamma probability density function
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-gdtri">Function: <strong>gdtri</strong> <em>A B Y</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236GDTRI-function"></span><span id="index-Function_002c-gdtri"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-hyp2f1">Function: <strong>hyp2f1</strong> <em>A B C X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236HYP2F1-function"></span><span id="index-Function_002c-hyp2f1"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-hyperg">Function: <strong>hyperg</strong> <em>A B X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236HYPERG-function"></span><span id="index-Function_002c-hyperg"></span>
+<p>Computes the confluent hypergeometric function
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-i0">Function: <strong>i0</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236I0-function"></span><span id="index-Function_002c-i0"></span>
+<p>Returns modified Bessel function of order zero of the argument
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-i0e">Function: <strong>i0e</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236I0E-function"></span><span id="index-Function_002c-i0e"></span>
+<p>Returns exponentially scaled modified Bessel function of order zero of the argument
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-i1">Function: <strong>i1</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236I1-function"></span><span id="index-Function_002c-i1"></span>
+<p>Returns modified Bessel function of order one of the argument
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-i1e">Function: <strong>i1e</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236I1E-function"></span><span id="index-Function_002c-i1e"></span>
+<p>Returns exponentially scaled modified Bessel function of order one of the argument
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-igam">Function: <strong>igam</strong> <em>A X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236IGAM-function"></span><span id="index-Function_002c-igam"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-igamc">Function: <strong>igamc</strong> <em>A X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236IGAMC-function"></span><span id="index-Function_002c-igamc"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-igamci">Function: <strong>igamci</strong> <em>A Q</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236IGAMCI-function"></span><span id="index-Function_002c-igamci"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-igami">Function: <strong>igami</strong> <em>A P</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236IGAMI-function"></span><span id="index-Function_002c-igami"></span>
+<p>Returns the x such that: igamc(a, x) = p<br>
+The input argument a must be positive and p must be between 0 and 1.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-incbet">Function: <strong>incbet</strong> <em>AA BB XX</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236INCBET-function"></span><span id="index-Function_002c-incbet"></span>
+<p>Returns incomplete beta integral of the arguments, evaluated from zero to x.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-incbi">Function: <strong>incbi</strong> <em>AA BB YY0</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236INCBI-function"></span><span id="index-Function_002c-incbi"></span>
+<p>Given y, the function finds x such that incbet( a, b, x ) = y
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-iv">Function: <strong>iv</strong> <em>V X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236IV-function"></span><span id="index-Function_002c-iv"></span>
+<p>Returns modified Bessel function of order v of the argument.  If x is negative, v must be integer valued.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-j0">Function: <strong>j0</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236J0-function"></span><span id="index-Function_002c-j0"></span>
+<p>Returns Bessel function of order zero of the argument
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-j1">Function: <strong>j1</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236J1-function"></span><span id="index-Function_002c-j1"></span>
+<p>Returns Bessel function of order one of the argument.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-jacobian_002delliptic">Function: <strong>jacobian-elliptic</strong> <em>U M</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236JACOBIAN_002dELLIPTIC-function"></span><span id="index-Function_002c-jacobian_002delliptic"></span>
+<p>Evaluates the Jacobian elliptic functions sn(u|m), cn(u|m), and dn(u|m) of parameter m between 0 and 1, and real argument u. Returns VALUES (sn cn dn)
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-jv">Function: <strong>jv</strong> <em>V X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236JV-function"></span><span id="index-Function_002c-jv"></span>
+<p>Returns Bessel function of order v of the argument, where v is real.  Negative x is allowed if v is an integer.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-k0">Function: <strong>k0</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236K0-function"></span><span id="index-Function_002c-k0"></span>
+<p>Returns modified Bessel function of the third kind of order zero of the argument.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-k0e">Function: <strong>k0e</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236K0E-function"></span><span id="index-Function_002c-k0e"></span>
+<p>Returns exponentially scaled modified Bessel function of the third kind of order zero of the argument.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-k1">Function: <strong>k1</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236K1-function"></span><span id="index-Function_002c-k1"></span>
+<p>Computes the modified Bessel function of the third kind of order one of the argument.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-k1e">Function: <strong>k1e</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236K1E-function"></span><span id="index-Function_002c-k1e"></span>
+<p>Returns exponentially scaled modified Bessel function of the third kind of order one of the argument
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-kn">Function: <strong>kn</strong> <em>NN X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236KN-function"></span><span id="index-Function_002c-kn"></span>
+<p>Returns modified Bessel function of the third kind of order n of the argument
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-lanczos_002dsum">Function: <strong>lanczos-sum</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LANCZOS_002dSUM-function"></span><span id="index-Function_002c-lanczos_002dsum"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-lanczos_002dsum_002dnear_002d1">Function: <strong>lanczos-sum-near-1</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LANCZOS_002dSUM_002dNEAR_002d1-function"></span><span id="index-Function_002c-lanczos_002dsum_002dnear_002d1"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-lanczos_002dsum_002dnear_002d2">Function: <strong>lanczos-sum-near-2</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LANCZOS_002dSUM_002dNEAR_002d2-function"></span><span id="index-Function_002c-lanczos_002dsum_002dnear_002d2"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-lanczos_002dsum_002dscaled">Function: <strong>lanczos-sum-scaled</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LANCZOS_002dSUM_002dSCALED-function"></span><span id="index-Function_002c-lanczos_002dsum_002dscaled"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-lbeta">Function: <strong>lbeta</strong> <em>A B</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LBETA-function"></span><span id="index-Function_002c-lbeta"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-lgam1p">Function: <strong>lgam1p</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LGAM1P-function"></span><span id="index-Function_002c-lgam1p"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-log_002dgamma">Function: <strong>log-gamma</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LOG_002dGAMMA-function"></span><span id="index-Function_002c-log_002dgamma"></span>
+<p>Returns the base e logarithm of the absolute value of the Gamma function of the argument.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-log_002dndtr">Function: <strong>log-ndtr</strong> <em>A</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LOG_002dNDTR-function"></span><span id="index-Function_002c-log_002dndtr"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-log1p">Function: <strong>log1p</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LOG1P-function"></span><span id="index-Function_002c-log1p"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-log1pmx">Function: <strong>log1pmx</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236LOG1PMX-function"></span><span id="index-Function_002c-log1pmx"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-nbdtr">Function: <strong>nbdtr</strong> <em>K N P</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236NBDTR-function"></span><span id="index-Function_002c-nbdtr"></span>
+<p>Returns the sum of the terms 0 through k of the negative binomial distribution
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-nbdtrc">Function: <strong>nbdtrc</strong> <em>K N P</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236NBDTRC-function"></span><span id="index-Function_002c-nbdtrc"></span>
+<p>Returns the sum of the terms k+1 to infinity of the negative binomial distribution
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-nbdtri">Function: <strong>nbdtri</strong> <em>K N P</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236NBDTRI-function"></span><span id="index-Function_002c-nbdtri"></span>
+<p>Returns the sum of the terms k+1 to infinity of the negative binomial distribution
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-ndtr">Function: <strong>ndtr</strong> <em>A</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236NDTR-function"></span><span id="index-Function_002c-ndtr"></span>
+<p>Returns the area under the Gaussian probability density function, integrated from minus infinity to x
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-ndtri">Function: <strong>ndtri</strong> <em>Y0</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236NDTRI-function"></span><span id="index-Function_002c-ndtri"></span>
+<p>Returns the argument, x, for which the area under the Gaussian probability density function (integrated from minus infinity to x) is equal to y.<br>
+For small arguments 0 &lt; y &lt; exp(-2), the program computes z = sqrt( -2.0 * log(y) ); then the approximation is x = z - log(z)/z  - (1/z) P(1/z) / Q(1/z).
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-owens_002dt">Function: <strong>owens-t</strong> <em>H A</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236OWENS_002dT-function"></span><span id="index-Function_002c-owens_002dt"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-pdtr">Function: <strong>pdtr</strong> <em>K M</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236PDTR-function"></span><span id="index-Function_002c-pdtr"></span>
+<p>Returns the sum of the first k terms of the Poisson distribution
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-pdtrc">Function: <strong>pdtrc</strong> <em>K M</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236PDTRC-function"></span><span id="index-Function_002c-pdtrc"></span>
+<p>Returns the sum of the terms k+1 to infinity of the Poisson distribution
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-pdtri">Function: <strong>pdtri</strong> <em>K Y</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236PDTRI-function"></span><span id="index-Function_002c-pdtri"></span>
+<p>Finds the Poisson variable x such that the integral from 0 to x of the Poisson density is equal to the given probability y
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-poch">Function: <strong>poch</strong> <em>X M</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236POCH-function"></span><span id="index-Function_002c-poch"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-psi">Function: <strong>psi</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236PSI-function"></span><span id="index-Function_002c-psi"></span>
+<p>Returns the logarithmic derivative of the gamma function
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-rgamma">Function: <strong>rgamma</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236RGAMMA-function"></span><span id="index-Function_002c-rgamma"></span>
+<p>Returns one divided by the Gamma function of the argument
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-shichi">Function: <strong>shichi</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236SHICHI-function"></span><span id="index-Function_002c-shichi"></span>
+<p>Returns VALUES (si ci)
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-sici">Function: <strong>sici</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236SICI-function"></span><span id="index-Function_002c-sici"></span>
+<p>Returns VALUES (si ci)
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-sindg">Function: <strong>sindg</strong> <em>D M S</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236SINDG-function"></span><span id="index-Function_002c-sindg"></span>
+<p>Range reduction is into intervals of 45 degrees.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-sinpi">Function: <strong>sinpi</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236SINPI-function"></span><span id="index-Function_002c-sinpi"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-spence">Function: <strong>spence</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236SPENCE-function"></span><span id="index-Function_002c-spence"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-stdtr">Function: <strong>stdtr</strong> <em>K T1</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236STDTR-function"></span><span id="index-Function_002c-stdtr"></span>
+<p>Computes the integral from minus infinity to t of the Student t distribution with integer k &gt; 0 degrees of freedom
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-stdtri">Function: <strong>stdtri</strong> <em>K P</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236STDTRI-function"></span><span id="index-Function_002c-stdtri"></span>
+<p>Given probability p, finds the argument t such that stdtr(k,t) is equal to p
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-tandg">Function: <strong>tandg</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236TANDG-function"></span><span id="index-Function_002c-tandg"></span>
+<p>Returns the circular tangent of the argument x in degrees
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-y0">Function: <strong>y0</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236Y0-function"></span><span id="index-Function_002c-y0"></span>
+<p>Bessel function of the second kind, order zero
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-y1">Function: <strong>y1</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236Y1-function"></span><span id="index-Function_002c-y1"></span>
+<p>Returns Bessel function of the second kind of order one of the argument.
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-yn">Function: <strong>yn</strong> <em>N X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236YN-function"></span><span id="index-Function_002c-yn"></span>
+<p>Returns Bessel function of order n, where n is a (possibly negative) integer
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-yv">Function: <strong>yv</strong> <em>V X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236YV-function"></span><span id="index-Function_002c-yv"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-zeta">Function: <strong>zeta</strong> <em>X Q</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ZETA-function"></span><span id="index-Function_002c-zeta"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-zetac">Function: <strong>zetac</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236ZETAC-function"></span><span id="index-Function_002c-zetac"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+
+<hr>
+<span id="Internal-definitions"></span><div class="header">
+<p>
+Previous: <a href="#Exported-definitions" accesskey="p" rel="prev">Exported definitions</a>, Up: <a href="#Definitions" accesskey="u" rel="up">Definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Internal-definitions-1"></span><h3 class="section">4.2 Internal definitions</h3>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Internal-functions" accesskey="1">Internal functions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="Internal-functions"></span><div class="header">
+<p>
+Previous: <a href="#Internal-definitions" accesskey="p" rel="prev">Internal definitions</a>, Up: <a href="#Internal-definitions" accesskey="u" rel="up">Internal definitions</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Functions-1"></span><h4 class="subsection">4.2.1 Functions</h4>
+<dl>
+<dt id="index-cephes_002dairy">Function: <strong>cephes-airy</strong> <em>X AI AIP BI BIP</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236CEPHES_002dAIRY-function"></span><span id="index-Function_002c-cephes_002dairy"></span>
+<p>Solution of the differential equation y&rdquo;(x) = xy<br>
+The function returns the two independent solutions Ai, Bi and their first derivatives Ai&rsquo;(x), Bi&rsquo;(x).
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-cephes_002dellpj">Function: <strong>cephes-ellpj</strong> <em>U M SN CN DN PHI</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236CEPHES_002dELLPJ-function"></span><span id="index-Function_002c-cephes_002dellpj"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-cephes_002dfresnl">Function: <strong>cephes-fresnl</strong> <em>XXA SSA CCA</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236CEPHES_002dFRESNL-function"></span><span id="index-Function_002c-cephes_002dfresnl"></span>
+<p>Evaluates S and C fresnel integrals and returns VALUES (S C)
+</p><dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-cephes_002dshichi">Function: <strong>cephes-shichi</strong> <em>X SI CI</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236CEPHES_002dSHICHI-function"></span><span id="index-Function_002c-cephes_002dshichi"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-cephes_002dsici">Function: <strong>cephes-sici</strong> <em>X SI CI</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236CEPHES_002dSICI-function"></span><span id="index-Function_002c-cephes_002dsici"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt id="index-sign_002dgamma">Function: <strong>sign-gamma</strong> <em>X</em></dt>
+<dd><span id="go-to-the-CEPHES_2236_2236SIGN_002dGAMMA-function"></span><span id="index-Function_002c-sign_002dgamma"></span>
+<dl compact="compact">
+<dt><strong>Package</strong></dt>
+<dd><p><a href="#go-to-the-CEPHES-package"><tt>cephes</tt></a>
+</p></dd>
+<dt><strong>Source</strong></dt>
+<dd><p><a href="#go-to-the-cephes_002fcephes_2024lisp-file"><tt>cephes.lisp</tt></a> (file)
+</p></dd>
+</dl>
+</dd></dl>
+
+
+
+<hr>
+<span id="Indexes"></span><div class="header">
+<p>
+Previous: <a href="#Definitions" accesskey="p" rel="prev">Definitions</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Indexes-1"></span><h2 class="appendix">Appendix A Indexes</h2>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Concept-index" rel="index" accesskey="1">Concept index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Function-index" rel="index" accesskey="2">Function index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Variable-index" rel="index" accesskey="3">Variable index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Data-type-index" rel="index" accesskey="4">Data type index</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="Concept-index"></span><div class="header">
+<p>
+Next: <a href="#Function-index" accesskey="n" rel="next">Function index</a>, Previous: <a href="#Indexes" accesskey="p" rel="prev">Indexes</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Concepts"></span><h3 class="appendixsec">A.1 Concepts</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Concept-index_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-index_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-index_cp_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes_002easd"><tt>cephes.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_2024asd-file">The cephes․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes_002fcephes_002elisp"><tt>cephes/cephes.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_002fcephes_2024lisp-file">The cephes/cephes․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes_002finit_002elisp"><tt>cephes/init.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_002finit_2024lisp-file">The cephes/init․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes_002fpackage_002elisp"><tt>cephes/package.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_002fpackage_2024lisp-file">The cephes/package․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-index_cp_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-cephes_002easd">File, Lisp, <tt>cephes.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_2024asd-file">The cephes․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-cephes_002fcephes_002elisp">File, Lisp, <tt>cephes/cephes.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_002fcephes_2024lisp-file">The cephes/cephes․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-cephes_002finit_002elisp">File, Lisp, <tt>cephes/init.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_002finit_2024lisp-file">The cephes/init․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-File_002c-Lisp_002c-cephes_002fpackage_002elisp">File, Lisp, <tt>cephes/package.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_002fpackage_2024lisp-file">The cephes/package․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Concept-index_cp_letter-L">L</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-cephes_002easd">Lisp File, <tt>cephes.asd</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_2024asd-file">The cephes․asd file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-cephes_002fcephes_002elisp">Lisp File, <tt>cephes/cephes.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_002fcephes_2024lisp-file">The cephes/cephes․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-cephes_002finit_002elisp">Lisp File, <tt>cephes/init.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_002finit_2024lisp-file">The cephes/init․lisp file</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Lisp-File_002c-cephes_002fpackage_002elisp">Lisp File, <tt>cephes/package.lisp</tt></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes_002fpackage_2024lisp-file">The cephes/package․lisp file</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Concept-index_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-index_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Concept-index_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+</td></tr></table>
+
+
+
+<hr>
+<span id="Function-index"></span><div class="header">
+<p>
+Next: <a href="#Variable-index" accesskey="n" rel="next">Variable index</a>, Previous: <a href="#Concept-index" accesskey="p" rel="prev">Concept index</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Functions-2"></span><h3 class="appendixsec">A.2 Functions</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-fn" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-A">A</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-airy"><code>airy</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-B">B</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bdtr"><code>bdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bdtrc"><code>bdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bdtri"><code>bdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-besselpoly"><code>besselpoly</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-beta"><code>beta</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-btdtr"><code>btdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cbrt"><code>cbrt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes_002dairy"><code>cephes-airy</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes_002dellpj"><code>cephes-ellpj</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes_002dfresnl"><code>cephes-fresnl</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes_002dshichi"><code>cephes-shichi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes_002dsici"><code>cephes-sici</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-chdtr"><code>chdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-chdtrc"><code>chdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-chdtri"><code>chdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cosdg"><code>cosdg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cosm1"><code>cosm1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cospi"><code>cospi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cotdg"><code>cotdg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-D">D</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-dawsn"><code>dawsn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-E">E</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ellie"><code>ellie</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ellik"><code>ellik</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ellpe"><code>ellpe</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ellpk"><code>ellpk</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-erf"><code>erf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-erfc"><code>erfc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-erfcinv"><code>erfcinv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-erfinv"><code>erfinv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-exp10"><code>exp10</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-exp2"><code>exp2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-expm1"><code>expm1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-expn"><code>expn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-fdtr"><code>fdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-fdtrc"><code>fdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-fdtri"><code>fdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-fresnl"><code>fresnl</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-airy"><code><span class="roman">Function, </span>airy</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-bdtr"><code><span class="roman">Function, </span>bdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-bdtrc"><code><span class="roman">Function, </span>bdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-bdtri"><code><span class="roman">Function, </span>bdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-besselpoly"><code><span class="roman">Function, </span>besselpoly</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-beta"><code><span class="roman">Function, </span>beta</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-btdtr"><code><span class="roman">Function, </span>btdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cbrt"><code><span class="roman">Function, </span>cbrt</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cephes_002dairy"><code><span class="roman">Function, </span>cephes-airy</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cephes_002dellpj"><code><span class="roman">Function, </span>cephes-ellpj</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cephes_002dfresnl"><code><span class="roman">Function, </span>cephes-fresnl</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cephes_002dshichi"><code><span class="roman">Function, </span>cephes-shichi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cephes_002dsici"><code><span class="roman">Function, </span>cephes-sici</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-chdtr"><code><span class="roman">Function, </span>chdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-chdtrc"><code><span class="roman">Function, </span>chdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-chdtri"><code><span class="roman">Function, </span>chdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cosdg"><code><span class="roman">Function, </span>cosdg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cosm1"><code><span class="roman">Function, </span>cosm1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cospi"><code><span class="roman">Function, </span>cospi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-cotdg"><code><span class="roman">Function, </span>cotdg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-dawsn"><code><span class="roman">Function, </span>dawsn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-ellie"><code><span class="roman">Function, </span>ellie</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-ellik"><code><span class="roman">Function, </span>ellik</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-ellpe"><code><span class="roman">Function, </span>ellpe</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-ellpk"><code><span class="roman">Function, </span>ellpk</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-erf"><code><span class="roman">Function, </span>erf</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-erfc"><code><span class="roman">Function, </span>erfc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-erfcinv"><code><span class="roman">Function, </span>erfcinv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-erfinv"><code><span class="roman">Function, </span>erfinv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-exp10"><code><span class="roman">Function, </span>exp10</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-exp2"><code><span class="roman">Function, </span>exp2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-expm1"><code><span class="roman">Function, </span>expm1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-expn"><code><span class="roman">Function, </span>expn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-fdtr"><code><span class="roman">Function, </span>fdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-fdtrc"><code><span class="roman">Function, </span>fdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-fdtri"><code><span class="roman">Function, </span>fdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-fresnl"><code><span class="roman">Function, </span>fresnl</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-gamma"><code><span class="roman">Function, </span>gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-gdtr"><code><span class="roman">Function, </span>gdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-gdtrc"><code><span class="roman">Function, </span>gdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-gdtri"><code><span class="roman">Function, </span>gdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-hyp2f1"><code><span class="roman">Function, </span>hyp2f1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-hyperg"><code><span class="roman">Function, </span>hyperg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-i0"><code><span class="roman">Function, </span>i0</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-i0e"><code><span class="roman">Function, </span>i0e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-i1"><code><span class="roman">Function, </span>i1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-i1e"><code><span class="roman">Function, </span>i1e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-igam"><code><span class="roman">Function, </span>igam</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-igamc"><code><span class="roman">Function, </span>igamc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-igamci"><code><span class="roman">Function, </span>igamci</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-igami"><code><span class="roman">Function, </span>igami</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-incbet"><code><span class="roman">Function, </span>incbet</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-incbi"><code><span class="roman">Function, </span>incbi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-iv"><code><span class="roman">Function, </span>iv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-j0"><code><span class="roman">Function, </span>j0</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-j1"><code><span class="roman">Function, </span>j1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-jacobian_002delliptic"><code><span class="roman">Function, </span>jacobian-elliptic</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-jv"><code><span class="roman">Function, </span>jv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-k0"><code><span class="roman">Function, </span>k0</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-k0e"><code><span class="roman">Function, </span>k0e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-k1"><code><span class="roman">Function, </span>k1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-k1e"><code><span class="roman">Function, </span>k1e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-kn"><code><span class="roman">Function, </span>kn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-lanczos_002dsum"><code><span class="roman">Function, </span>lanczos-sum</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-lanczos_002dsum_002dnear_002d1"><code><span class="roman">Function, </span>lanczos-sum-near-1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-lanczos_002dsum_002dnear_002d2"><code><span class="roman">Function, </span>lanczos-sum-near-2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-lanczos_002dsum_002dscaled"><code><span class="roman">Function, </span>lanczos-sum-scaled</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-lbeta"><code><span class="roman">Function, </span>lbeta</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-lgam1p"><code><span class="roman">Function, </span>lgam1p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-log_002dgamma"><code><span class="roman">Function, </span>log-gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-log_002dndtr"><code><span class="roman">Function, </span>log-ndtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-log1p"><code><span class="roman">Function, </span>log1p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-log1pmx"><code><span class="roman">Function, </span>log1pmx</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-nbdtr"><code><span class="roman">Function, </span>nbdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-nbdtrc"><code><span class="roman">Function, </span>nbdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-nbdtri"><code><span class="roman">Function, </span>nbdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-ndtr"><code><span class="roman">Function, </span>ndtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-ndtri"><code><span class="roman">Function, </span>ndtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-owens_002dt"><code><span class="roman">Function, </span>owens-t</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-pdtr"><code><span class="roman">Function, </span>pdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-pdtrc"><code><span class="roman">Function, </span>pdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-pdtri"><code><span class="roman">Function, </span>pdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-poch"><code><span class="roman">Function, </span>poch</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-psi"><code><span class="roman">Function, </span>psi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-rgamma"><code><span class="roman">Function, </span>rgamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-shichi"><code><span class="roman">Function, </span>shichi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-sici"><code><span class="roman">Function, </span>sici</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-sign_002dgamma"><code><span class="roman">Function, </span>sign-gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-sindg"><code><span class="roman">Function, </span>sindg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-sinpi"><code><span class="roman">Function, </span>sinpi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-spence"><code><span class="roman">Function, </span>spence</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-stdtr"><code><span class="roman">Function, </span>stdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-stdtri"><code><span class="roman">Function, </span>stdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-tandg"><code><span class="roman">Function, </span>tandg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-y0"><code><span class="roman">Function, </span>y0</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-y1"><code><span class="roman">Function, </span>y1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-yn"><code><span class="roman">Function, </span>yn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-yv"><code><span class="roman">Function, </span>yv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-zeta"><code><span class="roman">Function, </span>zeta</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Function_002c-zetac"><code><span class="roman">Function, </span>zetac</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-G">G</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gamma"><code>gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gdtr"><code>gdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gdtrc"><code>gdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-gdtri"><code>gdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-H">H</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-hyp2f1"><code>hyp2f1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-hyperg"><code>hyperg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-I">I</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-i0"><code>i0</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-i0e"><code>i0e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-i1"><code>i1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-i1e"><code>i1e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-igam"><code>igam</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-igamc"><code>igamc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-igamci"><code>igamci</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-igami"><code>igami</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incbet"><code>incbet</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incbi"><code>incbi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-iv"><code>iv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-J">J</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-j0"><code>j0</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-j1"><code>j1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-jacobian_002delliptic"><code>jacobian-elliptic</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-jv"><code>jv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-K">K</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-k0"><code>k0</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-k0e"><code>k0e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-k1"><code>k1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-k1e"><code>k1e</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-kn"><code>kn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-L">L</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lanczos_002dsum"><code>lanczos-sum</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lanczos_002dsum_002dnear_002d1"><code>lanczos-sum-near-1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lanczos_002dsum_002dnear_002d2"><code>lanczos-sum-near-2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lanczos_002dsum_002dscaled"><code>lanczos-sum-scaled</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lbeta"><code>lbeta</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-lgam1p"><code>lgam1p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-log_002dgamma"><code>log-gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-log_002dndtr"><code>log-ndtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-log1p"><code>log1p</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-log1pmx"><code>log1pmx</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-N">N</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-nbdtr"><code>nbdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-nbdtrc"><code>nbdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-nbdtri"><code>nbdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ndtr"><code>ndtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ndtri"><code>ndtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-O">O</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-owens_002dt"><code>owens-t</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-pdtr"><code>pdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-pdtrc"><code>pdtrc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-pdtri"><code>pdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-poch"><code>poch</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-psi"><code>psi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-R">R</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-rgamma"><code>rgamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-shichi"><code>shichi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sici"><code>sici</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sign_002dgamma"><code>sign-gamma</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Internal-functions">Internal functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sindg"><code>sindg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sinpi"><code>sinpi</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-spence"><code>spence</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-stdtr"><code>stdtr</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-stdtri"><code>stdtri</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-T">T</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tandg"><code>tandg</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-Y">Y</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-y0"><code>y0</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-y1"><code>y1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-yn"><code>yn</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-yv"><code>yv</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Function-index_fn_letter-Z">Z</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zeta"><code>zeta</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-zetac"><code>zetac</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Exported-functions">Exported functions</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Function-index_fn_letter-A"><b>A</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-D"><b>D</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-G"><b>G</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-H"><b>H</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-J"><b>J</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-K"><b>K</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-O"><b>O</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-T"><b>T</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-Y"><b>Y</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Function-index_fn_letter-Z"><b>Z</b></a>
+ &nbsp; 
+</td></tr></table>
+
+
+
+<hr>
+<span id="Variable-index"></span><div class="header">
+<p>
+Next: <a href="#Data-type-index" accesskey="n" rel="next">Data type index</a>, Previous: <a href="#Function-index" accesskey="p" rel="prev">Function index</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Variables"></span><h3 class="appendixsec">A.3 Variables</h3>
+
+
+
+<hr>
+<span id="Data-type-index"></span><div class="header">
+<p>
+Previous: <a href="#Variable-index" accesskey="p" rel="prev">Variable index</a>, Up: <a href="#Indexes" accesskey="u" rel="up">Indexes</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Indexes" title="Index" rel="index">Index</a>]</p>
+</div>
+<span id="Data-types"></span><h3 class="appendixsec">A.4 Data types</h3>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Data-type-index_tp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-tp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes"><code>cephes</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes-system">The cephes system</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-cephes-1"><code>cephes</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes-package">The cephes package</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-Package_002c-cephes"><code><span class="roman">Package, </span>cephes</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes-package">The cephes package</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Data-type-index_tp_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-System_002c-cephes"><code><span class="roman">System, </span>cephes</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-cephes-system">The cephes system</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Data-type-index_tp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Data-type-index_tp_letter-S"><b>S</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<hr>
+
+
+
+</body>
+</html>
