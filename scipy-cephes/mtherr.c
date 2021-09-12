@@ -18,7 +18,7 @@
  *
  * This routine may be called to report one of the following
  * error conditions (in the include file mconf.h).
- *  
+ *
  *   Mnemonic        Value          Significance
  *
  *    DOMAIN            1       argument domain error
@@ -54,8 +54,8 @@ Copyright 1984, 1987 by Stephen L. Moshier
 Direct inquiries to 30 Frost Street, Cambridge, MA 02140
 */
 
-#include <stdio.h>
 #include "mconf.h"
+#include <stdio.h>
 
 int merror = 0;
 

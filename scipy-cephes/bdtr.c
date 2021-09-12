@@ -163,7 +163,7 @@ double incbet(), incbi(), pow(), log1p(), expm1();
 #endif
 
 extern double NAN;
-#endif 0
+#endif
 
 double bdtrc(double k, int n, double p)
 {

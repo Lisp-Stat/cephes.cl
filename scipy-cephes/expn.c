@@ -75,7 +75,7 @@ double expn(int n, double x)
   int i, k;
   static double big = BIG;
 
-  if (_isnan(x)) {
+  if (isnan(x)) {
     return NAN;
   }
   else if (n < 0 || x < 0) {

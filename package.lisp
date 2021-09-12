@@ -1,8 +1,8 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: ANSI-Common-Lisp; Package: CL-USER -*-
 ;;; Copyright (c) 2019-2021 Symbolics Pte. Ltd. All rights reserved.
 
-(uiop:define-package #:cephes
-  (:use #:cl)
+(uiop:define-package :cephes
+  (:use :cl)
 
   (:export #:airy		  ;Airy function
 	   #:bdtr		  ;Binomial distribution

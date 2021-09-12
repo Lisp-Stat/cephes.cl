@@ -4,7 +4,7 @@ double gammasgn(double x)
 {
   double fx;
 
-  if (_isnan(x)) {
+  if (isnan(x)) {
     return x;
   }
   if (x > 0) {

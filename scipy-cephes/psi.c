@@ -163,7 +163,7 @@ double psi(double x)
   }
   else if (x == 0) {
     mtherr( "psi", SING );
-    return _copysign(INFINITY, -x);
+    return copysign(INFINITY, -x);
   }
   else if (x < 0.0) {
     /* argument reduction before evaluating tan(pi * x) */

@@ -5,13 +5,21 @@ HEADERS = $(wildcard *.h)
 OBJS = $(patsubst %.c, %.o, $(SRC))
 
 CC = gcc
-CFLAGS = -g -O2 -Wall -Wno-unused-function -fno-builtin -include cephes.h -include math.h
+CFLAGS = -g -O2 -Wall -Wno-unused-function -fno-builtin -fPIC -include cephes.h -include math.h
 AR = ar
 RANLIB = ranlib
 INCS = mconf.h
 AS = as
 
-all: libmd.a mtst dtestvec dcalc paranoia # stamp-timing
+ifeq ($(OS),Windows_NT)
+	OUTPUT = libmd.dll
+else # UNIX, use uname to determine which one
+	UNAME_S := $(shell uname -s)
+	LDFLAGS = -lm
+	OUTPUT = libmd.so
+endif
+
+all: shared
 
 stamp-timing: libmd.a mtst time-it
 	time-it "mtst > /dev/null"
@@ -47,10 +55,11 @@ paranoia: paranoia.o setprec.o libmd.a
 paranoia.o: paranoia.c
 	$(CC) $(CFLAGS) -c paranoia.c
 
-libmd.dll: $(OBJS) $(INCS)
-	   $(CC) -shared -o libmd.dll $(OBJS)
+shared: $(OBJS) $(INCS)
+	   $(CC) -shared -o $(OUTPUT) $(LDFLAGS) $(OBJS)
 
 libmd.a: $(OBJS) $(INCS)
+
 # for real Unix:
 	$(AR) rv libmd.a $(OBJS)
 # for djgcc MSDOS:
@@ -99,6 +108,7 @@ clean:
 	rm -f dcalc
 	rm -f libmd.a
 	rm -f libmd.dll
+	rm -f libmd.so
 	rm -f time-it
 	rm -f dtestvec
 

@@ -98,7 +98,7 @@ Copyright 1984, 1987, 1989, 1995 by Stephen L. Moshier
  * Constant definitions for math error conditions. These are also in
  * math.h
  */
-#if 0
+#ifndef __MINGW64__		/* MINGW defines these in math.h */
 #define DOMAIN	        1	/* argument domain error */
 #define SING		2	/* argument singularity */
 #define OVERFLOW	3	/* overflow range error */

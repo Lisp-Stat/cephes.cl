@@ -1,5 +1,5 @@
-# CEPHES.CL
-  A common lisp CFFI wrapper for the [Scipy version of Cephes special functions](https://github.com/scipy/scipy/tree/master/scipy/special/cephes).
+# Cephes Mathematical Library
+  A common lisp CFFI wrapper for the [SciPy version of Cephes special functions](https://github.com/scipy/scipy/tree/master/scipy/special/cephes).
 
 For many years Cephes was considered the gold standard in
 cross-platform mathematical libraries, superior to the libm
@@ -8,36 +8,39 @@ ANSI C specifications have closed the gap, but there are still certain
 special and statistical functions available in Cephes that are not in
 the standard C libraries.
 
-The Scipy version differs from standard Cephes in that it has some
+The SciPy version differs from standard Cephes in that it has some
 additional functions, improvements in accuracy, and is better
 documented.  Only double-float versions are provided.
 
 # Installation
 
-You will need to build the C shared library manually according to the
-conventions of your system.  As delivered, the Makefile is set-up to
-work on MS Windows, and you can build it like so:
+The ASDF file will automatically build the shared library as part of
+the load operation. If you need to build on a system other than MS
+Windows or UNIX, you will need to modify the make file to account for
+the linker command to create a shared library.
+
+As delivered, the Makefile is set-up to work on MS Windows or UNIX,
+and you can build it manually like so:
 
 ```sh
-cd scipy-cephes
-make libmd.dll
+cd scipy-cephes && make
 ```
 
-If you are running on UNIX, you'll need to add a target that builds a
-shared library on that platform.  If you do this, please drop a note
-into a Cephes [repository
+If you build this on another platform, please drop a note into a
+Cephes [repository
 issue](https://github.com/Lisp-Stat/cephes.cl/issues) with the build
-instructions so we can update the Makefile.
+instructions so we can update the Makefile and system definition.
 
 The `init.lisp` file, where CFFI loads the library, should work out of
-the box if `libmd` on the path somewhere, regardless of platform.
+the box if `libmd` on the path somewhere, regardless of platform.  If
+in doubt, place a copy in the same directory as this README.
 
 # Documentation
 
 If you know your way around special functions, the table below should
 suffice to get started.  For a more complete description, see the doc
-strings in cephes.lisp.  Finally, the C source code itself, referenced
-in =cephes.lisp=, is through and complete.
+strings in `cephes.lisp`.  Finally, the C source code itself, referenced
+in `cephes.lisp`, is thorough and complete from a mathematical perspective.
 
 You can also use the
 [scipy.special](https://docs.scipy.org/doc/scipy/reference/special.html#module-scipy.special)
@@ -45,10 +48,10 @@ online documentation.
 
 # The API
   There is no overlap between the wrapped Cephes functions and the
-  Common Lisp numerical tower. All functions are in the =cephes=
+  Common Lisp numerical tower.  All functions are in the `cephes`
   package.
 
-  Currently exported functions are:
+  Exported functions are:
 
 | function          | description                                                                   |
 |-------------------|-------------------------------------------------------------------------------|
