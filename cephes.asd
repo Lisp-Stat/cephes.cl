@@ -1,5 +1,5 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: ANSI-Common-Lisp; Package: ASDF -*-
-;;; Copyright (c) 2021 by Symbolics Pte. Ltd. All rights reserved.
+;;; Copyright (c) 2022 by Symbolics Pte. Ltd. All rights reserved.
 
 ;; Define a makefile as a kind of source file in ASDF
 (defclass makefile (source-file) ((type :initform "m")))
@@ -8,7 +8,7 @@
   (let* ((lib-dir (system-relative-pathname "cephes" "scipy-cephes"))
          (lib (make-pathname :directory `(:relative ,(namestring lib-dir))
                              :name "libmd"
-                             :type #+unix "so" #+(or windows win32) "dll"))
+                             :type #+darwin "dylib" #+(and unix (not darwin)) "so" #+(or windows win32) "dll"))
 	 (built (probe-file (namestring lib))))
     (if built
 	(format *error-output* "Library ~S exists, skipping build" lib)
