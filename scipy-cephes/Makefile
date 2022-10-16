@@ -15,7 +15,7 @@ ifeq ($(OS),Windows_NT)
 	OUTPUT = libmd.dll
 else # UNIX, use uname to determine which one
 	UNAME_S := $(shell uname -s)
-	ifeq ($(UNAME_S), LINUX)
+	ifeq ($(UNAME_S), Linux)
 		LDFLAGS = -lm
 		OUTPUT = libmd.so
 	endif
