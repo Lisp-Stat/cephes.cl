@@ -4,7 +4,7 @@ SRC = $(wildcard *.c)
 HEADERS = $(wildcard *.h)
 OBJS = $(patsubst %.c, %.o, $(SRC))
 
-CC = gcc
+CC = cc
 CFLAGS = -g -O2 -Wall -Wno-unused-function -fno-builtin -fPIC -include cephes.h -include math.h
 AR = ar
 RANLIB = ranlib
@@ -15,8 +15,14 @@ ifeq ($(OS),Windows_NT)
 	OUTPUT = libmd.dll
 else # UNIX, use uname to determine which one
 	UNAME_S := $(shell uname -s)
-	LDFLAGS = -lm
-	OUTPUT = libmd.so
+	ifeq ($(UNAME_S), Linux)
+		LDFLAGS = -lm
+		OUTPUT = libmd.so
+	endif
+	ifeq ($(UNAME_S), Darwin)
+		LDFLAGS = -lm
+		OUTPUT = libmd.dylib
+	endif
 endif
 
 all: shared

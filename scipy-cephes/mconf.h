@@ -221,5 +221,10 @@ extern int merror;
 #define cephes_isfinite(x) __builtin_isfinite(x)
 #endif
 #endif
+#ifndef cephes_isnan
+#define cephes_isnan(x) isnan(x)
+#define cephes_isinf(x) isinf(x)
+#define cephes_isfinite(x) isfinite(x)
+#endif
 
 #endif				/* CEPHES_MCONF_H */

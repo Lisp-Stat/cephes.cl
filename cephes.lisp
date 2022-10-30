@@ -30,7 +30,7 @@ The function returns the two independent solutions Ai, Bi and their first deriva
   "Returns the sum of the terms k+1 through n of the Binomial probability density"
     (k :double)(n :int)(p :double))
 (cffi:defcfun "bdtri" :double		;Inverse binomial distribution
-  "Finds the event probability p such that the sum of the terms 0 through k of the Binomial probability densityis equal to the given cumulative probability y."
+  "Finds the event probability p such that the sum of the terms 0 through k of the Binomial probability density is equal to the given cumulative probability y."
     (k :int)(n :int)(y :double))
 
 
@@ -499,7 +499,7 @@ For small arguments 0 < y < exp(-2), the program computes z = sqrt( -2.0 * log(y
 
 ;; lanczos.c
 (cffi:defcfun ("lanczos_sum" lanczos-sum) :double (x :double))
-(cffi:defcfun ("lanczos_sum_expg_scaled" lanczos-sum-scaled) :double (x :double))
+(cffi:defcfun ("lanczos_sum_expg_scaled" lanczos-sum-scaled) :double (x :double)) ;note g=6.024680040776729583740234375, not 13... as is common
 (cffi:defcfun ("lanczos_sum_near_1" lanczos-sum-near-1) :double (x :double))
 (cffi:defcfun ("lanczos_sum_near_2" lanczos-sum-near-2) :double (x :double))
 
@@ -507,9 +507,7 @@ For small arguments 0 < y < exp(-2), the program computes z = sqrt( -2.0 * log(y
 (cffi:defcfun ("owens_t" owens-t) :double (h :double) (a :double)) ;Owen's T-Function
 
 
-
-
-
-
-
-
+;; poly.h
+(cffi:defcfun "evlrat" :double
+  "Evaluate a rational function"
+  (x :double)(num (:pointer :double))(m :int)(denom (:pointer :double))(n :int))
