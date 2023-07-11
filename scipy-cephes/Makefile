@@ -15,13 +15,18 @@ ifeq ($(OS),Windows_NT)
 	OUTPUT = libmd.dll
 else # UNIX, use uname to determine which one
 	UNAME_S := $(shell uname -s)
+	UNAME_M := $(shell uname -m)
 	ifeq ($(UNAME_S), Linux)
 		LDFLAGS = -lm
 		OUTPUT = libmd.so
 	endif
 	ifeq ($(UNAME_S), Darwin)
 		LDFLAGS = -lm
-		OUTPUT = libmd.dylib
+		ifeq ($(UNAME_M), arm64)
+			OUTPUT = libmd-arm64.dylib
+		else
+			OUTPUT = libmd-x86-64.dylib
+		endif
 	endif
 endif
 
@@ -115,6 +120,7 @@ clean:
 	rm -f libmd.a
 	rm -f libmd.dll
 	rm -f libmd.so
+	rm -f libmd-*.dylib
 	rm -f time-it
 	rm -f dtestvec
 
