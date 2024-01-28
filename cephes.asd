@@ -7,7 +7,9 @@
 (defmethod perform ((o compile-op) (c makefile))
   (let* ((lib-dir (system-relative-pathname "cephes" "scipy-cephes/"))
          (lib (make-pathname :directory (pathname-directory lib-dir)
-                             :name "libmd"
+                             :name #+(or (and unix (not darwin)) windows win32) "libmd"
+			           #+(and darwin arm64) "libmd-arm64"
+			           #+(and darwin x86-64) "libmd-x86-64"
 			     :device (pathname-device lib-dir)
                              :type #+darwin "dylib"
 				   #+(and unix (not darwin)) "so"
