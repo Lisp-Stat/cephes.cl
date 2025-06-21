@@ -27,11 +27,11 @@
 				     #+(or windows win32) "dll"))
 	   (built (probe-file (namestring lib))))
       (if built
-	  (format *error-output* "Library ~S exists, skipping build" lib)
-	  (format *error-output* "Building ~S~%" lib))
+	      (format *compile-verbose* "Library ~S exists, skipping build" lib)
+	      (format *compile-verbose* "Building ~S~%" lib))
       (unless built
 	(chdir (native-namestring lib-dir))
-	(run-program "make" :output t)))))
+	(run-program "make" :output *compile-verbose*)))))
 
 (defsystem "cephes"
   :description "Wrapper for the Cephes Mathematical Library"
