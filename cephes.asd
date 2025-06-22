@@ -19,19 +19,19 @@
     (let* ((lib-dir (system-relative-pathname "cephes" "scipy-cephes/"))
            (lib (make-pathname :directory (pathname-directory lib-dir)
                                :name #+(or (and unix (not darwin)) windows win32) "libmd"
-			       #+(and darwin arm64) "libmd-arm64"
-			       #+(and darwin x86-64) "libmd-x86-64"
-			       :device (pathname-device lib-dir)
+			                   #+(and darwin arm64) "libmd-arm64"
+			                   #+(and darwin x86-64) "libmd-x86-64"
+			                   :device (pathname-device lib-dir)
                                :type #+darwin "dylib"
-				     #+(and unix (not darwin)) "so"
-				     #+(or windows win32) "dll"))
-	   (built (probe-file (namestring lib))))
+				               #+(and unix (not darwin)) "so"
+				               #+(or windows win32) "dll"))
+	       (built (probe-file (namestring lib))))
       (if built
-	  (format *error-output* "Library ~S exists, skipping build" lib)
-	  (format *error-output* "Building ~S~%" lib))
+	      (format *compile-verbose* "Library ~S exists, skipping build" lib)
+	      (format *compile-verbose* "Building ~S~%" lib))
       (unless built
-	(chdir (native-namestring lib-dir))
-	(run-program "make" :output t)))))
+	    (chdir (native-namestring lib-dir))
+	    (run-program "make" :output *compile-verbose*)))))
 
 (defsystem "cephes"
   :description "Wrapper for the Cephes Mathematical Library"
@@ -41,7 +41,7 @@
   :depends-on ("cffi")
   :serial t
   :components (#-allegro (:module "libmd"
-			  :components ((:makefile "makefile")))
-	       (:file "package")
-	       (:file "init")
+			              :components ((:makefile "makefile")))
+	           (:file "package")
+	           (:file "init")
                (:file "cephes")))
