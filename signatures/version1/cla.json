@@ -1,0 +1,30 @@
+{
+  "signedContributors": [
+    {
+      "name": "russell",
+      "id": 2660,
+      "created_at": "2025-06-21T15:55:28.628Z",
+      "email": "russell.sim@gmail.com",
+      "age": 41,
+      "category": "I am signing on behalf of myself.",
+      "migrated_from": "cla-assistant.io"
+    },
+    {
+      "name": "nathanvy",
+      "id": 2128134,
+      "created_at": "2023-07-10T06:54:35.721Z",
+      "email": "n@0x85.org",
+      "category": "I am signing on behalf of myself.",
+      "migrated_from": "cla-assistant.io"
+    },
+    {
+      "name": "tobyWorland",
+      "id": 47527939,
+      "created_at": "2022-10-16T01:03:01.205Z",
+      "email": "toby.worland@gmail.com",
+      "age": 23,
+      "category": "I am signing on behalf of myself.",
+      "migrated_from": "cla-assistant.io"
+    }
+  ]
+}
