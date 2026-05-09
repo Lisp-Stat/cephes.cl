@@ -16,7 +16,9 @@ ifeq ($(OS),Windows_NT)
 else # UNIX, use uname to determine which one
 	UNAME_S := $(shell uname -s)
 	UNAME_M := $(shell uname -m)
-	ifeq ($(UNAME_S), Linux)
+    LNX_BSD := Linux FreeBSD OpeBSD
+    IS_LNX_OR_BSD := $(filter $(UNAME_S),$(LNX_BSD))
+	ifneq ($(IS_LNX_OR_BSD),)
 		LDFLAGS = -lm
 		OUTPUT = libmd.so
 	endif
