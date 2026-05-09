@@ -17,6 +17,8 @@
   (defmethod perform ((o load-op) (c makefile)) t)
   (defmethod perform ((o compile-op) (c makefile))
     (let* ((lib-dir (system-relative-pathname "cephes" "scipy-cephes/"))
+           (make-executable #+bsd "make" 
+                            #+(not bsd) "make")
            (lib (make-pathname :directory (pathname-directory lib-dir)
                                :name #+(or (and unix (not darwin)) windows win32) "libmd"
 			                   #+(and darwin arm64) "libmd-arm64"
@@ -31,7 +33,7 @@
 	      (format *compile-verbose* "Building ~S~%" lib))
       (unless built
 	    (chdir (native-namestring lib-dir))
-	    (run-program "make" :output *compile-verbose*)))))
+	    (run-program make-executable :output *compile-verbose*)))))
 
 (defsystem "cephes"
   :description "Wrapper for the Cephes Mathematical Library"
