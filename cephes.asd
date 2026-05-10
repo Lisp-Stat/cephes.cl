@@ -17,7 +17,7 @@
   (defmethod perform ((o load-op) (c makefile)) t)
   (defmethod perform ((o compile-op) (c makefile))
     (let* ((lib-dir (system-relative-pathname "cephes" "scipy-cephes/"))
-           (make-executable #+bsd "make" 
+           (make-executable #+bsd "gmake" 
                             #+(not bsd) "make")
            (lib (make-pathname :directory (pathname-directory lib-dir)
                                :name #+(or (and unix (not darwin)) windows win32) "libmd"
