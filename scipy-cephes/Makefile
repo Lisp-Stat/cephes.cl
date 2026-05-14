@@ -16,7 +16,7 @@ ifeq ($(OS),Windows_NT)
 else # UNIX, use uname to determine which one
 	UNAME_S := $(shell uname -s)
 	UNAME_M := $(shell uname -m)
-    LNX_BSD := Linux FreeBSD OpeBSD
+    LNX_BSD := Linux FreeBSD OpenBSD
     IS_LNX_OR_BSD := $(filter $(UNAME_S),$(LNX_BSD))
 	ifneq ($(IS_LNX_OR_BSD),)
 		LDFLAGS = -lm
