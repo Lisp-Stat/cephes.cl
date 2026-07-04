@@ -9,6 +9,7 @@
 		#+x86-64 #.(merge-pathnames "scipy-cephes/libmd-x86-64.dylib" *compile-file-pathname*)
 		#+arm64 #.(merge-pathnames "scipy-cephes/libmd-arm64.dylib" *compile-file-pathname*)))
   (:unix (:or "libmd"
+			  "libmd.so"
               #.(merge-pathnames "scipy-cephes/libmd.so" *compile-file-pathname*)))
   (t (:default "libmd")))
 
